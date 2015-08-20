@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h1>
+    User roles
+
+    <a href="/user_roles/new" class="btn btn-lg btn-success">New User role</a>
+
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+
+        <th>Role description</th>
+
+        <th>Role name</th>
+
+        <th>Actions</th>
+      </tr>
+
+      <% @user_roles.each do |user_role| %>
+      <tr>
+
+        <td><%= user_role.role_description %></td>
+
+        <td><%= user_role.role_name %></td>
+
+        <td>
+
+          <a href="/user_roles/<%= user_role.id %>" class="btn btn-primary">Show</a>
+          <a href="/user_roles/<%= user_role.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_user_role/<%= user_role.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

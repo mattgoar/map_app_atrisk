@@ -1,0 +1,56 @@
+<div class="page-header">
+  <h1>
+    Data statuses
+
+    <a href="/data_statuses/new" class="btn btn-lg btn-success">New Data status</a>
+
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+
+        <th>Last edited by</th>
+
+        <th>Months late</th>
+
+        <th>Db type</th>
+
+        <th>Month</th>
+
+        <th>Year</th>
+
+        <th>Client</th>
+
+        <th>Actions</th>
+      </tr>
+
+      <% @data_statuses.each do |data_status| %>
+      <tr>
+
+        <td><%= data_status.last_edited_by %></td>
+
+        <td><%= data_status.months_late %></td>
+
+        <td><%= data_status.db_type %></td>
+
+        <td><%= data_status.month %></td>
+
+        <td><%= data_status.year %></td>
+
+        <td><%= data_status.client_id %></td>
+
+        <td>
+
+          <a href="/data_statuses/<%= data_status.id %>" class="btn btn-primary">Show</a>
+          <a href="/data_statuses/<%= data_status.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_data_status/<%= data_status.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

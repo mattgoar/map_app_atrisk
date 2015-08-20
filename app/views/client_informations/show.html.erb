@@ -1,0 +1,73 @@
+<div class="page-header">
+  <h3>Client Information #<%= @client_information.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+
+      <dt>Client</dt>
+      <dd><%= @client_information.client_id %></dd>
+
+
+      <dt>Last edited by</dt>
+      <dd><%= @client_information.last_edited_by %></dd>
+
+
+      <dt>Last contact date</dt>
+      <dd><%= @client_information.last_contact_date %></dd>
+
+
+      <dt>Exec sponsor</dt>
+      <dd><%= @client_information.exec_sponsor %></dd>
+
+
+      <dt>Termination notice</dt>
+      <dd><%= @client_information.termination_notice %></dd>
+
+
+      <dt>Payment status</dt>
+      <dd><%= @client_information.payment_status_id %></dd>
+
+
+      <dt>Balance</dt>
+      <dd><%= @client_information.balance %></dd>
+
+
+      <dt>Reactivation date</dt>
+      <dd><%= @client_information.reactivation_date %></dd>
+
+
+      <dt>Expiration date</dt>
+      <dd><%= @client_information.expiration_date %></dd>
+
+
+      <dt>Annual fee</dt>
+      <dd><%= @client_information.annual_fee %></dd>
+
+
+      <dt>Sales rep</dt>
+      <dd><%= @client_information.sales_rep_id %></dd>
+
+
+      <dt>Type</dt>
+      <dd><%= @client_information.type %></dd>
+
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+
+      <a href="/client_informations" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/client_informations/<%= @client_information.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_client_information/<%= @client_information.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+
+    </div>
+  </div>
+</div>

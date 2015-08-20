@@ -1,0 +1,80 @@
+<div class="page-header">
+  <h1>
+    Client informations
+
+    <a href="/client_informations/new" class="btn btn-lg btn-success">New Client information</a>
+
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+
+        <th>Client</th>
+
+        <th>Last edited by</th>
+
+        <th>Last contact date</th>
+
+        <th>Exec sponsor</th>
+
+        <th>Termination notice</th>
+
+        <th>Payment status</th>
+
+        <th>Balance</th>
+
+        <th>Reactivation date</th>
+
+        <th>Expiration date</th>
+
+        <th>Annual fee</th>
+
+        <th>Sales rep</th>
+
+        <th>Type</th>
+
+        <th>Actions</th>
+      </tr>
+
+      <% @client_informations.each do |client_information| %>
+      <tr>
+
+        <td><%= client_information.client_id %></td>
+
+        <td><%= client_information.last_edited_by %></td>
+
+        <td><%= client_information.last_contact_date %></td>
+
+        <td><%= client_information.exec_sponsor %></td>
+
+        <td><%= client_information.termination_notice %></td>
+
+        <td><%= client_information.payment_status_id %></td>
+
+        <td><%= client_information.balance %></td>
+
+        <td><%= client_information.reactivation_date %></td>
+
+        <td><%= client_information.expiration_date %></td>
+
+        <td><%= client_information.annual_fee %></td>
+
+        <td><%= client_information.sales_rep_id %></td>
+
+        <td><%= client_information.type %></td>
+
+        <td>
+
+          <a href="/client_informations/<%= client_information.id %>" class="btn btn-primary">Show</a>
+          <a href="/client_informations/<%= client_information.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_client_information/<%= client_information.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

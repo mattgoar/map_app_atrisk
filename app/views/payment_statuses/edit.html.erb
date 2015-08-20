@@ -1,0 +1,74 @@
+<!-- Validation failure messages -->
+<% if @payment_status.errors.any? %>
+  <% @payment_status.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Payment Status #<%= @payment_status.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+
+    <form action="/update_payment_status/<%= @payment_status.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+
+
+      <!-- Label and input for active -->
+
+      <div class="checkbox">
+        <label for="active">
+          <input type="checkbox" id="active" name="active" value="1" <%= "checked" if @payment_status.active %>>
+          Active
+        </label>
+      </div>
+
+
+
+      <!-- Label and input for last_edited_by -->
+
+      <div class="form-group">
+        <label for="last_edited_by" class="control-label">
+          Last edited by
+        </label>
+
+
+        <input type="text" id="last_edited_by" name="last_edited_by" placeholder="Last edited by" class="form-control" value="<%= @payment_status.last_edited_by %>">
+
+      </div>
+
+
+
+      <!-- Label and input for status_name -->
+
+      <div class="form-group">
+        <label for="status_name" class="control-label">
+          Status name
+        </label>
+
+
+        <input type="text" id="status_name" name="status_name" placeholder="Status name" class="form-control" value="<%= @payment_status.status_name %>">
+
+      </div>
+
+
+
+      <button class="btn btn-warning">
+        Update Payment Status
+      </button>
+      or
+
+      <a href="/payment_statuses/<%= @payment_status.id %>">Cancel</a>
+
+
+    </form>
+
+  </div>
+</div>

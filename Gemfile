@@ -45,3 +45,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Starter Generator
 gem 'starter_generators', :git => "http://github.com/rbetina/starter_generators.git"
+
+# Devise Security
+gem 'devise'
+
+# Seed Dump
+gem 'seed_dump'
