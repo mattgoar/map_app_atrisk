@@ -69,6 +69,7 @@ Rails.application.routes.draw do
 
   # DELETE
   get "/delete_client_onboarding_status/:id", :controller => "client_onboarding_statuses", :action => "destroy"
+  get "/delete_client_onboarding_status/:id", :controller => "client_onboarding_statuses", :action => "destroy"
   #------------------------------
 
   # Routes for the Data_status resource:
@@ -119,7 +120,9 @@ Rails.application.routes.draw do
   post "/update_impl_status/:id", :controller => "impl_statuses", :action => "update"
 
   # DELETE
-  get "/delete_impl_status/:id", :controller => "impl_statuses", :action => "destroy"
+  get "/activate_impl_status/:id", :controller => "impl_statuses", :action => "activate"
+  get "/deactivate_impl_status/:id", :controller => "impl_statuses", :action => "deactivate"
+
   #------------------------------
 
   # Routes for the Client resource:
@@ -136,7 +139,9 @@ Rails.application.routes.draw do
   post "/update_client/:id", :controller => "clients", :action => "update"
 
   # DELETE
-  get "/delete_client/:id", :controller => "clients", :action => "destroy"
+  get "/activate_client/:id", :controller => "clients", :action => "activate"
+  get "/deactivate_client/:id", :controller => "clients", :action => "deactivate"
+
   #------------------------------
 
   devise_for :users

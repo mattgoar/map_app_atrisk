@@ -22,29 +22,11 @@
 
 
       <!-- Label and input for active -->
-
-      <div class="checkbox">
-        <label for="active">
-          <input type="checkbox" id="active" name="active" value="1" <%= "checked" if @impl_status.active %>>
-          Active
-        </label>
-      </div>
-
+      <input name="active" type="hidden" value="<%= @impl_status.active %>">
 
 
       <!-- Label and input for last_edited_by -->
-
-      <div class="form-group">
-        <label for="last_edited_by" class="control-label">
-          Last edited by
-        </label>
-
-
-        <input type="text" id="last_edited_by" name="last_edited_by" placeholder="Last edited by" class="form-control" value="<%= @impl_status.last_edited_by %>">
-
-      </div>
-
-
+      <input name="last_edited_by" type="hidden" value="<%= @impl_status.last_edited_by %>">
 
       <!-- Label and input for status_name -->
 

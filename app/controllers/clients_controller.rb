@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   def index
-    @clients = Client.all
+    @clients = Client.all.order('active DESC, clientname')
   end
 
   def show
@@ -54,13 +54,24 @@ class ClientsController < ApplicationController
 
   end
 
-  def destroy
+  def activate
     @client = Client.find(params[:id])
+    @client.active = true
+    @client.last_edited_by  = current_user.id
+    @client.save
 
-    @client.destroy
-
-
-    redirect_to "/clients", :notice => "Client deleted."
+    redirect_to "/clients", :notice => "Client activated."
 
   end
+
+ def deactivate
+    @client = Client.find(params[:id])
+    @client.active = false
+    @client.last_edited_by  = current_user.id
+    @client.save
+
+    redirect_to "/clients", :notice => "Client deactivated."
+
+  end
+
 end

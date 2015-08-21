@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821191808) do
+ActiveRecord::Schema.define(version: 20150821210323) do
 
   create_table "client_informations", force: :cascade do |t|
     t.integer  "client_id"
@@ -35,8 +35,9 @@ ActiveRecord::Schema.define(version: 20150821191808) do
     t.integer  "current_impl_status"
     t.date     "certification_date"
     t.date     "kickoff_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "client_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "clients", force: :cascade do |t|
@@ -53,22 +54,25 @@ ActiveRecord::Schema.define(version: 20150821191808) do
     t.integer  "db_type"
     t.integer  "month"
     t.integer  "year"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "client_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "impl_statuses", force: :cascade do |t|
     t.boolean  "active"
     t.integer  "last_edited_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "status_name"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "payment_statuses", force: :cascade do |t|
     t.boolean  "active"
     t.integer  "last_edited_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "status_name"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "sales_reps", force: :cascade do |t|

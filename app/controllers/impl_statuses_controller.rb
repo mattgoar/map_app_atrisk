@@ -1,6 +1,6 @@
 class ImplStatusesController < ApplicationController
   def index
-    @impl_statuses = ImplStatus.all
+    @impl_statuses = ImplStatus.all.order(:status_name )
   end
 
   def show
@@ -23,7 +23,7 @@ class ImplStatusesController < ApplicationController
 
 
     if @impl_status.save
-      redirect_to "/impl_statuses", :notice => "Impl status created successfully."
+      redirect_to "/impl_statuses", :notice => "Implementation step created successfully."
     else
       render 'new'
     end
@@ -47,20 +47,33 @@ class ImplStatusesController < ApplicationController
 
 
     if @impl_status.save
-      redirect_to "/impl_statuses", :notice => "Impl status updated successfully."
+      redirect_to "/impl_statuses", :notice => "Implementation step updated successfully."
     else
       render 'edit'
     end
 
   end
 
-  def destroy
+  def activate
     @impl_status = ImplStatus.find(params[:id])
+    @impl_status.active = "true"
+    @impl_status.last_edited_by = current_user.id
+    @impl_status.save
 
-    @impl_status.destroy
 
 
-    redirect_to "/impl_statuses", :notice => "Impl status deleted."
+    redirect_to "/impl_statuses", :notice => "Step activated."
 
   end
+
+   def deactivate
+    @impl_status = ImplStatus.find(params[:id])
+    @impl_status.active = "false"
+    @impl_status.last_edited_by = current_user.id
+    @impl_status.save
+
+    redirect_to "/impl_statuses", :notice => "Step deactivated."
+
+  end
+
 end

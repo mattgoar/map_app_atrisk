@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  active: false
+  last_edited_by: 1
+  status_name: MyString
+
+two:
+  active: false
+  last_edited_by: 1
+  status_name: MyString

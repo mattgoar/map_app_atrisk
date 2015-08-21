@@ -32,19 +32,12 @@
       </div>
 
 
-      <!-- Label and input for active -->
-
-      <div class="checkbox">
-        <label for="active">
-          <input type="checkbox" id="active" name="active" value="1" <%= "checked" if @sales_rep.active %>>
-          Active
-        </label>
-      </div>
+       <!-- Label and input for active -->
+      <input name="active" type="hidden" value="true">
 
 
       <!-- Label and input for last_edited_by -->
-
-      <input name="last_edited_by" type="hidden" value="<%= current_user.id %>">
+      <input name="last_edited_by" type="hidden" value="<%= @impl_status.last_edited_by %>">
 
 
 

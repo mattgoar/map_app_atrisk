@@ -14,8 +14,6 @@
 
         <th>Active</th>
 
-        <th>Last edited by</th>
-
         <th>Clientname</th>
 
         <th>Actions</th>
@@ -24,17 +22,27 @@
       <% @clients.each do |client| %>
       <tr>
 
-        <td><%= client.active %></td>
+        <td>
+          <% if client.active %>
+          <i class="fa fa-check-square fa-3x" color="green"></i>
+          <% else %>
+          <i class="fa fa-ban fa-3x" color="red"></i>
+          <% end %>
 
-        <td><%= client.last_edited_by %></td>
+        </td>
 
         <td><%= client.clientname %></td>
 
         <td>
 
-          <a href="/clients/<%= client.id %>" class="btn btn-primary">Show</a>
           <a href="/clients/<%= client.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_client/<%= client.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+
+          <% if client.active %>
+          <a href="/deactivate_client/<%= client.id %>" class="btn btn-danger" rel="nofollow">Deactivate</a>
+          <% else %>
+          <a href="/activate_client/<%= client.id %>" class="btn btn-success" rel="nofollow">Activate</a>
+
+          <% end %>
 
         </td>
       </tr>
