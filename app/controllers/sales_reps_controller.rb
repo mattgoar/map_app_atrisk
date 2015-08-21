@@ -54,13 +54,27 @@ class SalesRepsController < ApplicationController
 
   end
 
-  def destroy
+  def deactivate
     @sales_rep = SalesRep.find(params[:id])
 
-    @sales_rep.destroy
+    @sales_rep.active = "false"
+
+    @sales_rep.save
 
 
-    redirect_to "/sales_reps", :notice => "Sales rep deleted."
+    redirect_to "/sales_reps", :notice => "Sales rep inactivated."
+
+  end
+
+  def activate
+    @sales_rep = SalesRep.find(params[:id])
+
+    @sales_rep.active = "true"
+
+    @sales_rep.save
+
+
+    redirect_to "/sales_reps", :notice => "Sales rep activated."
 
   end
 end

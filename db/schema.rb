@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821163951) do
+ActiveRecord::Schema.define(version: 20150821191808) do
 
   create_table "client_informations", force: :cascade do |t|
     t.integer  "client_id"
@@ -74,8 +74,9 @@ ActiveRecord::Schema.define(version: 20150821163951) do
   create_table "sales_reps", force: :cascade do |t|
     t.boolean  "active"
     t.integer  "last_edited_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "name"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "user_roles", force: :cascade do |t|

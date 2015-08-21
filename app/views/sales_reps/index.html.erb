@@ -1,6 +1,6 @@
 <div class="page-header">
   <h1>
-    Sales reps
+    Sales Reps
 
     <a href="/sales_reps/new" class="btn btn-lg btn-success">New Sales rep</a>
 
@@ -14,8 +14,6 @@
 
         <th>Active</th>
 
-        <th>Last edited by</th>
-
         <th>Name</th>
 
         <th>Actions</th>
@@ -24,17 +22,25 @@
       <% @sales_reps.each do |sales_rep| %>
       <tr>
 
-        <td><%= sales_rep.active %></td>
-
-        <td><%= sales_rep.last_edited_by %></td>
+        <td>
+          <% if sales_rep.active %>
+          <i class="fa fa-check-square fa-3x" color="green"></i>
+          <% else %>
+          <i class="fa fa-ban fa-3x" color="red"></i>
+          <% end %>
+        </td>
 
         <td><%= sales_rep.name %></td>
 
         <td>
 
           <a href="/sales_reps/<%= sales_rep.id %>" class="btn btn-primary">Show</a>
-          <a href="/sales_reps/<%= sales_rep.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_sales_rep/<%= sales_rep.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <!-- #<a href="/sales_reps/<%= sales_rep.id %>/edit" class="btn btn-warning">Edit</a> -->
+          <% if sales_rep.active %>
+          <a href="/deactivate_sales_rep/<%= sales_rep.id %>" class="btn btn-danger" rel="nofollow">Inactivate</a>
+          <% else %>
+          <a href="/activate_sales_rep/<%= sales_rep.id %>" class="btn btn-success" rel="nofollow">Activate</a>
+          <% end %>
 
         </td>
       </tr>

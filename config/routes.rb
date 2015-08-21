@@ -50,7 +50,8 @@ Rails.application.routes.draw do
   post "/update_sales_rep/:id", :controller => "sales_reps", :action => "update"
 
   # DELETE
-  get "/delete_sales_rep/:id", :controller => "sales_reps", :action => "destroy"
+  get "/activate_sales_rep/:id", :controller => "sales_reps", :action => "activate"
+  get "/deactivate_sales_rep/:id", :controller => "sales_reps", :action => "deactivate"
   #------------------------------
 
   # Routes for the Client_onboarding_status resource:
