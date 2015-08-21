@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h3>Impl Status #<%= @impl_status.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+
+      <dt>Active</dt>
+      <dd><%= @impl_status.active %></dd>
+
+
+      <dt>Last edited by</dt>
+      <dd><%= @impl_status.last_edited_by %></dd>
+
+
+      <dt>Status name</dt>
+      <dd><%= @impl_status.status_name %></dd>
+
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+
+      <a href="/impl_statuses" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/impl_statuses/<%= @impl_status.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_impl_status/<%= @impl_status.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+
+    </div>
+  </div>
+</div>

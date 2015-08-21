@@ -1,0 +1,49 @@
+<div class="page-header">
+  <h3>Client Onboarding Status #<%= @client_onboarding_status.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+
+      <dt>Last edited by</dt>
+      <dd><%= @client_onboarding_status.last_edited_by %></dd>
+
+
+      <dt>Notes</dt>
+      <dd><%= @client_onboarding_status.notes %></dd>
+
+
+      <dt>Current impl status</dt>
+      <dd><%= @client_onboarding_status.current_impl_status %></dd>
+
+
+      <dt>Certification date</dt>
+      <dd><%= @client_onboarding_status.certification_date %></dd>
+
+
+      <dt>Kickoff date</dt>
+      <dd><%= @client_onboarding_status.kickoff_date %></dd>
+
+
+      <dt>Client</dt>
+      <dd><%= @client_onboarding_status.client_id %></dd>
+
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+
+      <a href="/client_onboarding_statuses" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/client_onboarding_statuses/<%= @client_onboarding_status.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_client_onboarding_status/<%= @client_onboarding_status.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+
+    </div>
+  </div>
+</div>

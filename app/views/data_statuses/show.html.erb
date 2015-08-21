@@ -1,0 +1,49 @@
+<div class="page-header">
+  <h3>Data Status #<%= @data_status.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+
+      <dt>Last edited by</dt>
+      <dd><%= @data_status.last_edited_by %></dd>
+
+
+      <dt>Months late</dt>
+      <dd><%= @data_status.months_late %></dd>
+
+
+      <dt>Db type</dt>
+      <dd><%= @data_status.db_type %></dd>
+
+
+      <dt>Month</dt>
+      <dd><%= @data_status.month %></dd>
+
+
+      <dt>Year</dt>
+      <dd><%= @data_status.year %></dd>
+
+
+      <dt>Client</dt>
+      <dd><%= @data_status.client_id %></dd>
+
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+
+      <a href="/data_statuses" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/data_statuses/<%= @data_status.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_data_status/<%= @data_status.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+
+    </div>
+  </div>
+</div>
