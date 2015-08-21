@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Payment Status #<%= @payment_status.id %></h3>
+  <h3>Edit Payment Status - <%= @payment_status.status_name %></h3>
 </div>
 
 <div class="row">
@@ -21,28 +21,13 @@
 
 
 
-      <!-- Label and input for active -->
 
-      <div class="checkbox">
-        <label for="active">
-          <input type="checkbox" id="active" name="active" value="1" <%= "checked" if @payment_status.active %>>
-          Active
-        </label>
-      </div>
-
+        <!-- Label and input for active -->
+      <input name="active" type="hidden" value="true">
 
 
       <!-- Label and input for last_edited_by -->
-
-      <div class="form-group">
-        <label for="last_edited_by" class="control-label">
-          Last edited by
-        </label>
-
-
-        <input type="text" id="last_edited_by" name="last_edited_by" placeholder="Last edited by" class="form-control" value="<%= @payment_status.last_edited_by %>">
-
-      </div>
+      <input name="last_edited_by" type="hidden" value="<%= current_user.id %>">
 
 
 
@@ -65,7 +50,7 @@
       </button>
       or
 
-      <a href="/payment_statuses/<%= @payment_status.id %>">Cancel</a>
+      <a href="/payment_statuses/">Cancel</a>
 
 
     </form>

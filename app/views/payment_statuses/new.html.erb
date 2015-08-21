@@ -26,7 +26,7 @@
 
 
       <!-- Label and input for last_edited_by -->
-      <input name="last_edited_by" type="hidden" value="<%= @payment_status.last_edited_by %>">
+      <input name="last_edited_by" type="hidden" value="<%= current_user.id %>">
 
 
       <!-- Label and input for status_name -->

@@ -12,6 +12,8 @@
     <table class="table table-striped table-hover">
       <tr>
 
+        <th>Active</th>
+
         <th>Status name</th>
 
         <th>Actions</th>
@@ -19,6 +21,15 @@
 
       <% @impl_statuses.each do |impl_status| %>
       <tr>
+
+         <td>
+          <% if impl_status.active %>
+          <i class="fa fa-check-square fa-2x" color="green"></i>
+          <% else %>
+          <i class="fa fa-ban fa-2x" color="red"></i>
+          <% end %>
+        </td>
+
 
         <td><%= impl_status.status_name %></td>
 

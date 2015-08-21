@@ -1,6 +1,6 @@
 class PaymentStatusesController < ApplicationController
   def index
-    @payment_statuses = PaymentStatus.all
+    @payment_statuses = PaymentStatus.all.order('active DESC, status_name')
   end
 
   def show
@@ -54,13 +54,24 @@ class PaymentStatusesController < ApplicationController
 
   end
 
-  def destroy
+  def activate
     @payment_status = PaymentStatus.find(params[:id])
+    @payment_status.active = true
+    @payment_status.last_edited_by = current_user.id
+    @payment_status.save
 
-    @payment_status.destroy
-
-
-    redirect_to "/payment_statuses", :notice => "Payment status deleted."
+    redirect_to "/payment_statuses", :notice => "Payment status activated."
 
   end
+
+  def deactivate
+    @payment_status = PaymentStatus.find(params[:id])
+    @payment_status.active = false
+    @payment_status.last_edited_by = current_user.id
+    @payment_status.save
+
+    redirect_to "/payment_statuses", :notice => "Payment status deactivated."
+
+  end
+
 end

@@ -37,7 +37,7 @@
 
 
       <!-- Label and input for last_edited_by -->
-      <input name="last_edited_by" type="hidden" value="<%= @impl_status.last_edited_by %>">
+      <input name="last_edited_by" type="hidden" value="<%= current_user.id %>">
 
 
 

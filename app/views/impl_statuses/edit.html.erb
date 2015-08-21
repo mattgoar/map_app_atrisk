@@ -26,7 +26,7 @@
 
 
       <!-- Label and input for last_edited_by -->
-      <input name="last_edited_by" type="hidden" value="<%= @impl_status.last_edited_by %>">
+      <input name="last_edited_by" type="hidden" value="<%= current_user.id %>">
 
       <!-- Label and input for status_name -->
 
@@ -47,7 +47,7 @@
       </button>
       or
 
-      <a href="/impl_statuses/<%= @impl_status.id %>">Cancel</a>
+      <a href="/impl_statuses/">Cancel</a>
 
 
     </form>

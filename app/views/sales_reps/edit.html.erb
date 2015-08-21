@@ -21,18 +21,22 @@
 
       <!-- Label and input for name -->
 
+
       <input name="name" type="hidden" value="<%= @sales_rep.name %>">
 
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+          <input type="text" id="name" name="name" placeholder="name" class="form-control" value="<%= @sales_rep.name %>">
+
+      </div>
 
       <!-- Label and input for active -->
 
-      <div class="checkbox">
-        <label for="active">
-          <input type="checkbox" id="active" name="active" value="1" <%= "checked" if @sales_rep.active %>>
-          Active
-        </label>
-      </div>
 
+
+      <input name="active" type="hidden" value="<%= @sales_rep.active %>">
 
 
       <!-- Label and input for last_edited_by -->
@@ -44,7 +48,7 @@
       </button>
       or
 
-      <a href="/sales_reps/<%= @sales_rep.id %>">Cancel</a>
+      <a href="/sales_reps/">Cancel</a>
 
 
     </form>

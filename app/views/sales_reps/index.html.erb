@@ -24,9 +24,9 @@
 
         <td>
           <% if sales_rep.active %>
-          <i class="fa fa-check-square fa-3x" color="green"></i>
+          <i class="fa fa-check-square fa-2x" color="green"></i>
           <% else %>
-          <i class="fa fa-ban fa-3x" color="red"></i>
+          <i class="fa fa-ban fa-2x" color="red"></i>
           <% end %>
         </td>
 
@@ -34,8 +34,7 @@
 
         <td>
 
-          <a href="/sales_reps/<%= sales_rep.id %>" class="btn btn-primary">Show</a>
-          <!-- #<a href="/sales_reps/<%= sales_rep.id %>/edit" class="btn btn-warning">Edit</a> -->
+          <a href="/sales_reps/<%= sales_rep.id %>/edit" class="btn btn-warning">Edit</a>
           <% if sales_rep.active %>
           <a href="/deactivate_sales_rep/<%= sales_rep.id %>" class="btn btn-danger" rel="nofollow">Inactivate</a>
           <% else %>

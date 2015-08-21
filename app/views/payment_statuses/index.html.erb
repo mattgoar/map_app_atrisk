@@ -1,8 +1,8 @@
 <div class="page-header">
   <h1>
-    Payment statuses
+    Payment Status
 
-    <a href="/payment_statuses/new" class="btn btn-lg btn-success">New Payment status</a>
+    <a href="/payment_statuses/new" class="btn btn-lg btn-success">New Status</a>
 
   </h1>
 </div>
@@ -14,8 +14,6 @@
 
         <th>Active</th>
 
-        <th>Last edited by</th>
-
         <th>Status name</th>
 
         <th>Actions</th>
@@ -24,17 +22,27 @@
       <% @payment_statuses.each do |payment_status| %>
       <tr>
 
-        <td><%= payment_status.active %></td>
+        <td>
+          <% if payment_status.active %>
+          <i class="fa fa-check-square fa-2x" color="green"></i>
+          <% else %>
+          <i class="fa fa-ban fa-2x" color="red"></i>
+          <% end %>
+        </td>
 
-        <td><%= payment_status.last_edited_by %></td>
 
         <td><%= payment_status.status_name %></td>
 
         <td>
 
-          <a href="/payment_statuses/<%= payment_status.id %>" class="btn btn-primary">Show</a>
           <a href="/payment_statuses/<%= payment_status.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_payment_status/<%= payment_status.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+
+          <% if payment_status.active %>
+          <a href="/deactivate_payment_status/<%= payment_status.id %>" class="btn btn-danger" rel="nofollow">Deactivate</a>
+          <% else %>
+          <a href="/activate_payment_status/<%= payment_status.id %>" class="btn btn-success" rel="nofollow">Activate</a>
+
+          <% end %>
 
         </td>
       </tr>

@@ -26,14 +26,16 @@ Rails.application.routes.draw do
 
   # READ
   get "/payment_statuses", :controller => "payment_statuses", :action => "index"
-  get "/payment_statuses/:id", :controller => "payment_statuses", :action => "show"
+  #get "/payment_statuses/:id", :controller => "payment_statuses", :action => "show"
 
   # UPDATE
   get "/payment_statuses/:id/edit", :controller => "payment_statuses", :action => "edit"
   post "/update_payment_status/:id", :controller => "payment_statuses", :action => "update"
 
   # DELETE
-  get "/delete_payment_status/:id", :controller => "payment_statuses", :action => "destroy"
+  get "/activate_payment_status/:id", :controller => "payment_statuses", :action => "activate"
+  get "/deactivate_payment_status/:id", :controller => "payment_statuses", :action => "deactivate"
+
   #------------------------------
 
   # Routes for the Sales_rep resource:
@@ -43,7 +45,7 @@ Rails.application.routes.draw do
 
   # READ
   get "/sales_reps", :controller => "sales_reps", :action => "index"
-  get "/sales_reps/:id", :controller => "sales_reps", :action => "show"
+  #get "/sales_reps/:id", :controller => "sales_reps", :action => "show"
 
   # UPDATE
   get "/sales_reps/:id/edit", :controller => "sales_reps", :action => "edit"
@@ -79,14 +81,14 @@ Rails.application.routes.draw do
 
   # READ
   get "/data_statuses", :controller => "data_statuses", :action => "index"
-  get "/data_statuses/:id", :controller => "data_statuses", :action => "show"
+  #get "/data_statuses/:id", :controller => "data_statuses", :action => "show"
 
   # UPDATE
   get "/data_statuses/:id/edit", :controller => "data_statuses", :action => "edit"
   post "/update_data_status/:id", :controller => "data_statuses", :action => "update"
 
   # DELETE
-  get "/delete_data_status/:id", :controller => "data_statuses", :action => "destroy"
+  get "/delete_data_status/:id", :controller => "data_statuses", :action => "delete"
   #------------------------------
 
   # Routes for the Client_information resource:
@@ -113,7 +115,7 @@ Rails.application.routes.draw do
 
   # READ
   get "/impl_statuses", :controller => "impl_statuses", :action => "index"
-  get "/impl_statuses/:id", :controller => "impl_statuses", :action => "show"
+  #get "/impl_statuses/:id", :controller => "impl_statuses", :action => "show"
 
   # UPDATE
   get "/impl_statuses/:id/edit", :controller => "impl_statuses", :action => "edit"

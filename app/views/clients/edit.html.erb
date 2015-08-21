@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Client #<%= @client.id %></h3>
+  <h3>Edit Client - <%= @client.clientname%></h3>
 </div>
 
 <div class="row">
@@ -19,38 +19,19 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-
-
-      <!-- Label and input for active -->
-
-      <div class="checkbox">
-        <label for="active">
-          <input type="checkbox" id="active" name="active" value="1" <%= "checked" if @client.active %>>
-          Active
-        </label>
-      </div>
-
+       <!-- Label and input for active -->
+      <input name="active" type="hidden" value="<%= @client.active %>">
 
 
       <!-- Label and input for last_edited_by -->
-
-      <div class="form-group">
-        <label for="last_edited_by" class="control-label">
-          Last edited by
-        </label>
-
-
-        <input type="text" id="last_edited_by" name="last_edited_by" placeholder="Last edited by" class="form-control" value="<%= @client.last_edited_by %>">
-
-      </div>
-
+      <input name="last_edited_by" type="hidden" value="<%= current_user.id %>">
 
 
       <!-- Label and input for clientname -->
 
       <div class="form-group">
         <label for="clientname" class="control-label">
-          Clientname
+          Name
         </label>
 
 
@@ -65,7 +46,7 @@
       </button>
       or
 
-      <a href="/clients/<%= @client.id %>">Cancel</a>
+      <a href="/clients/">Cancel</a>
 
 
     </form>

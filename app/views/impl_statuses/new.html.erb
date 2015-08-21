@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Impl Status</h3>
+  <h3>Add Implementation Step</h3>
 </div>
 
 <div class="row">
@@ -26,7 +26,7 @@
 
 
       <!-- Label and input for last_edited_by -->
-      <input name="last_edited_by" type="hidden" value="<%= @impl_status.last_edited_by %>">
+      <input name="last_edited_by" type="hidden" value="<%= current_user.id %>">
 
 
 
@@ -46,7 +46,7 @@
 
 
       <button class="btn btn-success">
-        Create Impl Status
+        Create Step
       </button>
       or
       <a href="/impl_statuses">Cancel</a>

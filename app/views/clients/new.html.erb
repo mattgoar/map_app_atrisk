@@ -22,27 +22,12 @@
 
 
       <!-- Label and input for active -->
-
-      <div class="checkbox">
-        <label for="active">
-          <input type="checkbox" id="active" name="active" value="1" <%= "checked" if @client.active %>>
-          Active
-        </label>
-      </div>
-
+      <input name="active" type="hidden" value="<%= true %>">
 
 
       <!-- Label and input for last_edited_by -->
+      <input name="last_edited_by" type="hidden" value="<%= current_user.id %>">
 
-      <div class="form-group">
-        <label for="last_edited_by" class="control-label">
-          Last edited by
-        </label>
-
-
-        <input type="text" id="last_edited_by" name="last_edited_by" placeholder="Last edited by" class="form-control" value="<%= @client.last_edited_by %>">
-
-      </div>
 
 
 
@@ -50,11 +35,11 @@
 
       <div class="form-group">
         <label for="clientname" class="control-label">
-          Clientname
+          Name
         </label>
 
 
-        <input type="text" id="clientname" name="clientname" placeholder="Clientname" class="form-control" value="<%= @client.clientname %>">
+        <input type="text" id="clientname" name="clientname" placeholder="Client Name" class="form-control" value="<%= @client.clientname %>">
 
       </div>
 
