@@ -1,10 +1,12 @@
 class ClientInformationsController < ApplicationController
   def index
-    @client_informations = ClientInformation.all
+    # @client_informations = ClientInformation.all
+    @client_informations = Client.where(active: true).order('clientname')
   end
 
   def show
-    @client_information = ClientInformation.find(params[:id])
+    @client_information = Client.where(id: params[:id])
+    @latest_client_information = Client.where(id: params[:id]).order('updated_at').first
   end
 
   def new
@@ -36,9 +38,7 @@ class ClientInformationsController < ApplicationController
 
     @client_information.sales_rep_id = params[:sales_rep_id]
 
-    @client_information.type = params[:type]
-
-
+    @client_information.contract_type = params[:type]
 
     if @client_information.save
       redirect_to "/client_informations", :notice => "Client information created successfully."
@@ -78,7 +78,7 @@ class ClientInformationsController < ApplicationController
 
     @client_information.sales_rep_id = params[:sales_rep_id]
 
-    @client_information.type = params[:type]
+    @client_information.contract_type = params[:contract_type]
 
 
 

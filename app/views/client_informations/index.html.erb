@@ -1,8 +1,8 @@
 <div class="page-header">
   <h1>
-    Client informations
+    MAP App At-Risk
 
-    <a href="/client_informations/new" class="btn btn-lg btn-success">New Client information</a>
+    <!-- <a href="/client_informations/new" class="btn btn-lg btn-success">New Client information</a> -->
 
   </h1>
 </div>
@@ -14,64 +14,54 @@
 
         <th>Client</th>
 
-        <th>Last edited by</th>
-
-        <th>Last contact date</th>
-
-        <th>Exec sponsor</th>
-
-        <th>Termination notice</th>
-
-        <th>Payment status</th>
-
-        <th>Balance</th>
-
-        <th>Reactivation date</th>
-
-        <th>Expiration date</th>
-
-        <th>Annual fee</th>
+        <th>Contract Type</th>
 
         <th>Sales rep</th>
 
-        <th>Type</th>
+        <th>Annual fee</th>
+
+        <th>Expiration date</th>
+
+        <th>Termination notice</th>
+
+        <th>Implementation Status</th>
+
+        <th>Balance</th>
+
+        <th>Payment status</th>
+
+        <th>Exec sponsor</th>
+
+        <th>Last contact date</th>
 
         <th>Actions</th>
       </tr>
 
-      <% @client_informations.each do |client_information| %>
+      <% @client_informations.each do |client| %>
       <tr>
 
-        <td><%= client_information.client_id %></td>
+        <td><%= client.clientname %></td>
 
-        <td><%= client_information.last_edited_by %></td>
+        <td><%= client.client_informations.order('updated_at').first.contract_type %></td>
 
-        <td><%= client_information.last_contact_date %></td>
+        <td><%= client.client_informations.order('updated_at').first.sales_rep.name %></td>
 
-        <td><%= client_information.exec_sponsor %></td>
+        <td><%= client.client_informations.order('updated_at').first.annual_fee %></td>
 
-        <td><%= client_information.termination_notice %></td>
+        <td><%= client.client_informations.order('updated_at').first.expiration_date %></td>
+        <td><%= client.client_informations.order('updated_at').first.termination_notice %></td>
 
-        <td><%= client_information.payment_status_id %></td>
+        <td><%= client.client_onboarding_statuses.order('updated_at').first.impl_status.status_name %></td>
 
-        <td><%= client_information.balance %></td>
+        <td><%= client.client_informations.order('updated_at').first.balance %></td>
+        <td><%= client.client_informations.order('updated_at').first.payment_status.status_name %></td>
 
-        <td><%= client_information.reactivation_date %></td>
-
-        <td><%= client_information.expiration_date %></td>
-
-        <td><%= client_information.annual_fee %></td>
-
-        <td><%= client_information.sales_rep_id %></td>
-
-        <td><%= client_information.type %></td>
+        <td><%= client.client_informations.order('updated_at').first.exec_sponsor %></td>
+        <td><%= client.client_informations.order('updated_at').first.last_contact_date %></td>
 
         <td>
 
-          <a href="/client_informations/<%= client_information.id %>" class="btn btn-primary">Show</a>
-          <a href="/client_informations/<%= client_information.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_client_information/<%= client_information.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-
+          <a href="/client_informations/<%= client.id %>" class="btn btn-primary">Show</a>
         </td>
       </tr>
       <% end %>

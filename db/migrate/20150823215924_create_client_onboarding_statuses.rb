@@ -3,7 +3,7 @@ class CreateClientOnboardingStatuses < ActiveRecord::Migration
     create_table :client_onboarding_statuses do |t|
       t.integer :last_edited_by
       t.text :notes
-      t.integer :current_impl_status
+      t.integer :impl_status_id
       t.date :certification_date
       t.date :kickoff_date
       t.integer :client_id

@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  last_edited_by: 1
+  ast_edited_by: 1
   notes: MyText
-  current_impl_status: 1
-  certification_date: 2015-08-21
-  kickoff_date: 2015-08-21
+  impl_status_id: 1
+  certification_date: 2015-08-23
+  kickoff_date: 2015-08-23
   client_id: 1
 
 two:
-  last_edited_by: 1
+  ast_edited_by: 1
   notes: MyText
-  current_impl_status: 1
-  certification_date: 2015-08-21
-  kickoff_date: 2015-08-21
+  impl_status_id: 1
+  certification_date: 2015-08-23
+  kickoff_date: 2015-08-23
   client_id: 1

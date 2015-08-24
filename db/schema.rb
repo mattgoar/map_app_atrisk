@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821210323) do
+ActiveRecord::Schema.define(version: 20150824190328) do
 
   create_table "client_informations", force: :cascade do |t|
     t.integer  "client_id"
@@ -25,19 +25,20 @@ ActiveRecord::Schema.define(version: 20150821210323) do
     t.date     "expiration_date"
     t.integer  "annual_fee"
     t.integer  "sales_rep_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "contract_type"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "client_onboarding_statuses", force: :cascade do |t|
     t.integer  "last_edited_by"
     t.text     "notes"
-    t.integer  "current_impl_status"
+    t.integer  "impl_status_id"
     t.date     "certification_date"
     t.date     "kickoff_date"
     t.integer  "client_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "clients", force: :cascade do |t|

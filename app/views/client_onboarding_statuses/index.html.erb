@@ -1,8 +1,8 @@
 <div class="page-header">
   <h1>
-    Client onboarding statuses
+   Implementation Tracker
 
-    <a href="/client_onboarding_statuses/new" class="btn btn-lg btn-success">New Client onboarding status</a>
+    <a href="/client_onboarding_statuses/new" class="btn btn-lg btn-success">Add Client</a>
 
   </h1>
 </div>
@@ -12,41 +12,34 @@
     <table class="table table-striped table-hover">
       <tr>
 
-        <th>Last edited by</th>
-
-        <th>Notes</th>
+        <th>Client</th>
 
         <th>Current impl status</th>
 
-        <th>Certification date</th>
-
         <th>Kickoff date</th>
 
-        <th>Client</th>
+        <th>Certification date</th>
 
         <th>Actions</th>
       </tr>
 
-      <% @client_onboarding_statuses.each do |client_onboarding_status| %>
+      <% @client_onboarding_statuses.each do |status| %>
       <tr>
 
-        <td><%= client_onboarding_status.last_edited_by %></td>
+        <td><%= status.client.clientname %></td>
 
-        <td><%= client_onboarding_status.notes %></td>
+        <td><%= status.impl_status.status_name %></td>
 
-        <td><%= client_onboarding_status.current_impl_status %></td>
+        <td><%= status.kickoff_date %></td>
 
-        <td><%= client_onboarding_status.certification_date %></td>
+        <td><%= status.certification_date %></td>
 
-        <td><%= client_onboarding_status.kickoff_date %></td>
 
-        <td><%= client_onboarding_status.client_id %></td>
 
         <td>
 
-          <a href="/client_onboarding_statuses/<%= client_onboarding_status.id %>" class="btn btn-primary">Show</a>
-          <a href="/client_onboarding_statuses/<%= client_onboarding_status.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_client_onboarding_status/<%= client_onboarding_status.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <a href="/client_onboarding_statuses/<%= status.id %>" class="btn btn-primary">Show Client</a>
+          <a href="/client_onboarding_statuses/<%= status.id %>/edit" class="btn btn-warning">Update Notes</a>
 
         </td>
       </tr>

@@ -18,7 +18,7 @@ class ClientOnboardingStatusesController < ApplicationController
 
     @client_onboarding_status.notes = params[:notes]
 
-    @client_onboarding_status.current_impl_status = params[:current_impl_status]
+    @client_onboarding_status.impl_status_id = params[:impl_status_id]
 
     @client_onboarding_status.certification_date = params[:certification_date]
 
@@ -48,7 +48,7 @@ class ClientOnboardingStatusesController < ApplicationController
 
     @client_onboarding_status.notes = params[:notes]
 
-    @client_onboarding_status.current_impl_status = params[:current_impl_status]
+    @client_onboarding_status.impl_status_id = params[:impl_status_id]
 
     @client_onboarding_status.certification_date = params[:certification_date]
 

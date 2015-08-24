@@ -15,7 +15,7 @@
 
 
       <dt>Current impl status</dt>
-      <dd><%= @client_onboarding_status.current_impl_status %></dd>
+      <dd><%= @client_onboarding_status.impl_status.status_name %></dd>
 
 
       <dt>Certification date</dt>
@@ -27,7 +27,7 @@
 
 
       <dt>Client</dt>
-      <dd><%= @client_onboarding_status.client_id %></dd>
+      <dd><%= @client_onboarding_status.client.clientname %></dd>
 
 
     </dl>

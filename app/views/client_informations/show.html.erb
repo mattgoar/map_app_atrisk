@@ -1,73 +1,91 @@
-<div class="page-header">
-  <h3>Client Information #<%= @client_information.id %></h3>
-</div>
+<div class="container">
+  <div class="page-header">
+    <h3>Client Information - <%= @latest_client_information.clientname %></h3>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-1">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Current Status</h3>
+        </div>
+        <div class="panel-body">
+          <dl class="dl-horizontal">
+            <dt>Client</dt>
+            <dd><%= @latest_client_information.clientname %></dd>
 
-<div class="row">
-  <div class="col-md-12">
-    <dl class="dl-horizontal">
+            <dt>Contract Type</dt>
+            <dd><%= @latest_client_information.client_informations.order('updated_at').first.contract_type %></dd>
 
-      <dt>Client</dt>
-      <dd><%= @client_information.client_id %></dd>
+            <dt>Sales rep</dt>
+            <dd><%= @latest_client_information.client_informations.order('updated_at').first.sales_rep.name %></dd>
 
+            <dt>Annual fee</dt>
+            <dd><%= @latest_client_information.client_informations.order('updated_at').first.annual_fee %></dd>
 
-      <dt>Last edited by</dt>
-      <dd><%= @client_information.last_edited_by %></dd>
+            <dt>Expiration date</dt>
+            <dd><%= @latest_client_information.client_informations.order('updated_at').first.expiration_date %></dd>
 
+            <dt>Termination notice</dt>
+            <dd><%= @latest_client_information.client_informations.order('updated_at').first.termination_notice %></dd>
 
-      <dt>Last contact date</dt>
-      <dd><%= @client_information.last_contact_date %></dd>
+            <dt>Implementation Status</dt>
+            <dd><%= @latest_client_information.client_onboarding_statuses.order('updated_at').first.impl_status.status_name %></dd>
 
+            <dt>Balance</dt>
+            <dd><%= @latest_client_information.client_informations.order('updated_at').first.balance %></dd>
 
-      <dt>Exec sponsor</dt>
-      <dd><%= @client_information.exec_sponsor %></dd>
+            <dt>Payment status</dt>
+            <dd><%= @latest_client_information.client_informations.order('updated_at').first.payment_status.status_name %></dd>
 
+            <dt>Exec sponsor</dt>
+            <dd><%= @latest_client_information.client_informations.order('updated_at').first.exec_sponsor %></dd>
 
-      <dt>Termination notice</dt>
-      <dd><%= @client_information.termination_notice %></dd>
+            <dt>Last contact date</dt>
+            <dd><%= @latest_client_information.client_informations.order('updated_at').first.last_contact_date %></dd>
 
+           </dl>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-4">
+       <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Actions</h3>
+        </div>
+        <div class="panel-body">
+          <a href="/client_informations/<%= @latest_client_information.id %>/edit" class="btn btn-success btn-lg btn-block">Update Contact</a>
+          <a href="/client_informations/<%= @latest_client_information.id %>/edit" class="btn btn-success btn-lg btn-block">Update Implementation</a>
+          <a href="/client_informations/<%= @latest_client_information.id %>/edit" class="btn btn-success btn-lg btn-block">Update Payment</a>
+          <a href="/client_informations/<%= @latest_client_information.id %>/edit" class="btn btn-success btn-lg btn-block">Update Contract Details</a>
+          <a href="/client_informations" class="btn btn-primary btn-lg btn-block">Back</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class = "col-xs-12 col-md-10 col-md-offset-1">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">History</h3>
+          <p class="help-block">Click to view changes<pi>
+        </div>
+        <div class="panel-body">
+          <ul class="list-group">
 
-      <dt>Payment status</dt>
-      <dd><%= @client_information.payment_status_id %></dd>
+          <!--
+            This is not going to work like this.
 
+            I need to load all the places where changes could have happened to pull a record for each of the items
 
-      <dt>Balance</dt>
-      <dd><%= @client_information.balance %></dd>
+            I can probably either put this into a hash or array and sort it.
 
-
-      <dt>Reactivation date</dt>
-      <dd><%= @client_information.reactivation_date %></dd>
-
-
-      <dt>Expiration date</dt>
-      <dd><%= @client_information.expiration_date %></dd>
-
-
-      <dt>Annual fee</dt>
-      <dd><%= @client_information.annual_fee %></dd>
-
-
-      <dt>Sales rep</dt>
-      <dd><%= @client_information.sales_rep_id %></dd>
-
-
-      <dt>Type</dt>
-      <dd><%= @client_information.type %></dd>
-
-
-    </dl>
-
-    <div class="btn-group btn-group-justified">
-
-      <a href="/client_informations" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/client_informations/<%= @client_information.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_client_information/<%= @client_information.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
-
+          -->
+          <% @client_information.each do |client| %>
+            <li class="list-group-item">
+              <a href=#>Edited by Matt Goar on 2015-09-09</a>
+            </li>
+          <% end %>
+      </ul>
     </div>
   </div>
 </div>
