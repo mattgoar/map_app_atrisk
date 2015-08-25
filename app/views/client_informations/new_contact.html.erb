@@ -8,24 +8,21 @@
   <% end %>
 <% end %>
 
-
 <div class= "container">
   <div class="page-header col-md-10 col-md-offset-1">
-    <h4>Payment Information - <%= @latest_client_information.client.clientname %></h4>
+    <h4>Contact Information - <%= @latest_client_information.client.clientname %></h4>
   </div>
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Add Payment Information</h3>
+          <h3 class="panel-title">Add Contact Information</h3>
         </div>
         <div class="panel-body">
-
           <form action="/create_client_information" method="post">
+
             <!-- Hidden input for authenticity token to protect from forgery -->
             <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-
 
             <!-- Label and input for client_id -->
 
@@ -34,14 +31,6 @@
              <!-- Label and input for last_edited_by -->
             <input name="last_edited_by" type="hidden" value="<%= current_user.id %>">
 
-            <!-- Label and input for last_contact_date -->
-
-            <input name="last_contact_date" type="hidden" value="<%= @latest_client_information.last_contact_date %>">
-
-            <!-- Label and input for exec_sponsor -->
-
-            <input name="exec_sponsor" type="hidden" value="<%= @latest_client_information.exec_sponsor %>">
-
            <!-- Label and input for expiration_date -->
 
            <input name="expiration_date" type="hidden" value="<%= @latest_client_information.expiration_date %>">
@@ -49,7 +38,6 @@
             <!-- Label and input for reactivation_date -->
 
            <input name="reactivation_date" type="hidden" value="<%= @latest_client_information.reactivation_date %>">
-
 
             <!-- Label and input for termination_notice -->
 
@@ -68,26 +56,41 @@
 
             <!-- Label and input for payment_status_id -->
 
-            <div class="form-group">
-              <label for="payment_status_id" class="control-label">
-                Payment Status
-              </label>
-
-              <%= select_tag(:payment_status_id, options_from_collection_for_select(PaymentStatus.all, :id, :status_name, @latest_client_information.payment_status_id), :class => "form-control") %>
-
-            </div>
+            <input name="payment_status_id" type="hidden" value="<%= @latest_client_information.payment_status_id %>">
 
             <!-- Label and input for balance -->
 
+            <input name="balance" type="hidden" value="<%= @latest_client_information.balance %>">
+
+             <!-- Label and input for last_contact_date -->
+
+            <input name="last_contact_date" type="hidden" value="<%= @latest_client_information.last_contact_date %>">
+
             <div class="form-group">
-              <label for="balance" class="control-label">
-                Balance
+              <label for="last_contact_date" class="control-label">
+                Last Contact Date
               </label>
 
 
-              <input type="text" id="balance" name="balance" placeholder="Balance" class="form-control" value="<%= @latest_client_information.balance %>">
+              <input type="date" id="last_contact_date" name="last_contact_date" placeholder="Last contact date" class="form-control" value="<%= @latest_client_information.last_contact_date %>">
 
             </div>
+
+            <!-- Label and input for exec_sponsor -->
+
+            <input name="exec_sponsor" type="hidden" value="<%= @latest_client_information.exec_sponsor %>">
+
+            <div class="form-group">
+              <label for="exec_sponsor" class="control-label">
+                Executive Sponsor
+              </label>
+
+
+              <input type="text" id="exec_sponsor" name="exec_sponsor" placeholder="Executive Sponsor" class="form-control" value="<%= @latest_client_information.exec_sponsor %>">
+
+            </div>
+
+
 
 
 
@@ -104,3 +107,4 @@
     </div>
   </div>
 </div>
+

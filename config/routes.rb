@@ -95,12 +95,14 @@ Rails.application.routes.draw do
   get "/client_informations/new", :controller => "client_informations", :action => "new"
   get "/client_informations/:id/new_contract", :controller => "client_informations", :action => "new_contract"
   get "/client_informations/:id/new_payment", :controller => "client_informations", :action => "new_payment"
+  get "/client_informations/:id/new_contact", :controller => "client_informations", :action => "new_contact"
   post "/create_client_information", :controller => "client_informations", :action => "create"
 
   # READ
   get "/client_informations", :controller => "client_informations", :action => "index"
   get "/client_informations/:id/contract", :controller => "client_informations", :action => "show_contract"
   get "/client_informations/:id/payment", :controller => "client_informations", :action => "show_payment"
+  get "/client_informations/:id/contact", :controller => "client_informations", :action => "show_contact"
   get "/client_informations/:id", :controller => "client_informations", :action => "show"
 
 

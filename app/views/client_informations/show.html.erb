@@ -14,34 +14,40 @@
             <dd><%= @latest_client_information.clientname %></dd>
 
             <dt>Contract Type</dt>
-            <dd><%= @latest_client_information.client_informations.order('updated_at').first.contract_type %></dd>
+            <dd><%= @latest_client_information.client_informations.order('updated_at DESC').first.contract_type %></dd>
 
             <dt>Sales rep</dt>
-            <dd><%= @latest_client_information.client_informations.order('updated_at').first.sales_rep.name %></dd>
+            <dd><%= @latest_client_information.client_informations.order('updated_at DESC').first.sales_rep.name %></dd>
 
             <dt>Annual fee</dt>
-            <dd><%= @latest_client_information.client_informations.order('updated_at').first.annual_fee %></dd>
+            <dd><%= number_to_currency(@latest_client_information.client_informations.order('updated_at DESC').first.annual_fee, precision: 0) %></dd>
 
             <dt>Expiration date</dt>
-            <dd><%= @latest_client_information.client_informations.order('updated_at').first.expiration_date %></dd>
+            <dd><%= @latest_client_information.client_informations.order('updated_at DESC').first.expiration_date %></dd>
 
             <dt>Termination notice</dt>
-            <dd><%= @latest_client_information.client_informations.order('updated_at').first.termination_notice %></dd>
+            <dd><%= @latest_client_information.client_informations.order('updated_at DESC').first.termination_notice %></dd>
 
             <dt>Implementation Status</dt>
-            <dd><%= @latest_client_information.client_onboarding_statuses.order('updated_at').first.impl_status.status_name %></dd>
+            <dd><%= @latest_client_information.client_onboarding_statuses.order('updated_at DESC').first.impl_status.status_name %></dd>
 
             <dt>Balance</dt>
-            <dd><%= @latest_client_information.client_informations.order('updated_at').first.balance %></dd>
+            <dd><%= number_to_currency(@latest_client_information.client_informations.order('updated_at DESC').first.balance, precision: 0) %></dd>
 
             <dt>Payment status</dt>
-            <dd><%= @latest_client_information.client_informations.order('updated_at').first.payment_status.status_name %></dd>
+            <dd><%= @latest_client_information.client_informations.order('updated_at DESC').first.payment_status.status_name %></dd>
 
             <dt>Exec sponsor</dt>
-            <dd><%= @latest_client_information.client_informations.order('updated_at').first.exec_sponsor %></dd>
+            <dd><%= @latest_client_information.client_informations.order('updated_at DESC').first.exec_sponsor %></dd>
 
             <dt>Last contact date</dt>
-            <dd><%= @latest_client_information.client_informations.order('updated_at').first.last_contact_date %></dd>
+            <dd><%= @latest_client_information.client_informations.order('updated_at DESC').first.last_contact_date %></dd>
+
+            <dt>At-Risk</dt>
+            <dd>Fill Me In</dd>
+
+            <dt>At-Risk Reason</dt>
+            <dd>Fill Me In</dd>
 
            </dl>
         </div>
@@ -54,13 +60,27 @@
         </div>
 
         <div class="panel-body">
+
           <div class="row" style = "padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
             <div class="btn-group btn-group-justified" role="group" aria-label="...">
-              <a href="/client_informations/<%= @latest_client_information.id %>/edit_contact" class="btn btn-primary">View Contact Detail</a>
-              <a href="/client_informations/<%= @latest_client_information.id %>/edit_contact" class="btn btn-warning">Update Contact</a>
+              <a href="/client_informations/<%= @latest_client_information.id %>/contact" class="btn btn-primary">View Contact Detail</a>
+              <a href="/client_informations/<%= @latest_client_information.id %>/new_contact" class="btn btn-warning">Update Contact</a>
             </div>
           </div>
 
+          <div class="row" style = "padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+              <a href="/client_informations/<%= @latest_client_information.id %>/payment" class="btn btn-primary">View Payment Detail</a>
+              <a href="/client_informations/<%= @latest_client_information.id %>/new_payment" class="btn btn-warning">Update Payment</a>
+            </div>
+          </div>
+
+          <div class="row" style = "padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+              <a href="/client_informations/<%= @latest_client_information.id %>/contract" class="btn btn-primary">View Contract Detail</a>
+               <a href="/client_informations/<%= @latest_client_information.id %>/new_contract" class="btn btn-warning">Update Contract</a>
+            </div>
+          </div>
 
           <div class="row" style = "padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
             <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -68,18 +88,14 @@
               <a href="/client_onboarding_statuses/<%= @latest_client_information.id %>/edit" class="btn btn-warning">Update Impl</a>
             </div>
           </div>
-          <div class="row" style = "padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
+
+          <div class="row" style = "padding-left: 10px; padding-right: 10px; padding-bottom: 8px;">
             <div class="btn-group btn-group-justified" role="group" aria-label="...">
-              <a href="/client_informations/<%= @latest_client_information.id %>/payment" class="btn btn-primary">View Payment Detail</a>
-              <a href="/client_informations/<%= @latest_client_information.id %>/new_payment" class="btn btn-warning">Update Payment</a>
+              <a href="#" class="btn btn-primary">View Data Detail</a>
+               <a href="#" class="btn btn-warning">Update Data Status</a>
             </div>
           </div>
-          <div class="row" style = "padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
-            <div class="btn-group btn-group-justified" role="group" aria-label="...">
-              <a href="/client_informations/<%= @latest_client_information.id %>/contract" class="btn btn-primary">View Contract Detail</a>
-               <a href="/client_informations/<%= @latest_client_information.id %>/new_contract" class="btn btn-warning">Update Contract</a>
-            </div>
-          </div>
+          <hr>
           <div class="row" style = "padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
             <a href="/client_informations" class="btn btn-success btn-block">Back</a>
           </div>

@@ -23,6 +23,13 @@ class ClientInformationsController < ApplicationController
     render 'show_payment.html.erb'
   end
 
+  def show_contact
+    @latest_client_information = ClientInformation.where(client_id: params[:id]).order('updated_at DESC').first
+    @client_information = ClientInformation.order('updated_at DESC').where(client_id: params[:id]).all[1..-1]
+
+    render 'show_contact.html.erb'
+  end
+
   def new_contract
     @client_information = ClientInformation.new
     @latest_client_information = ClientInformation.where(client_id: params[:id]).order('updated_at DESC').first
@@ -33,6 +40,12 @@ class ClientInformationsController < ApplicationController
     @client_information = ClientInformation.new
     @latest_client_information = ClientInformation.where(client_id: params[:id]).order('updated_at DESC').first
     render 'new_payment.html.erb'
+  end
+
+  def new_contact
+    @client_information = ClientInformation.new
+    @latest_client_information = ClientInformation.where(client_id: params[:id]).order('updated_at DESC').first
+    render 'new_contact.html.erb'
   end
 
   def create
