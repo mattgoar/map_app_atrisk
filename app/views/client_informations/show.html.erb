@@ -84,8 +84,8 @@
 
           <div class="row" style = "padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
             <div class="btn-group btn-group-justified" role="group" aria-label="...">
-              <a href="/client_onboarding_statuses/<%= @latest_client_information.id %>/edit" class="btn btn-primary">View Impl Detail</a>
-              <a href="/client_onboarding_statuses/<%= @latest_client_information.id %>/edit" class="btn btn-warning">Update Impl</a>
+              <a href="/client_onboarding_statuses/<%= @latest_client_information.id %>" class="btn btn-primary">View Impl Detail</a>
+              <a href="/client_onboarding_statuses/<%= @latest_client_information.id %>/new" class="btn btn-warning">Update Impl</a>
             </div>
           </div>
 
@@ -99,40 +99,8 @@
           <div class="row" style = "padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
             <a href="/client_informations" class="btn btn-success btn-block">Back</a>
           </div>
-
-
-
-
-
-
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class = "col-xs-12 col-md-10 col-md-offset-1">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">History</h3>
-          <p class="help-block">Click to view changes<pi>
-        </div>
-        <div class="panel-body">
-          <ul class="list-group">
-
-          <!--
-            This is not going to work like this.
-
-            I need to load all the places where changes could have happened to pull a record for each of the items
-
-            I can probably either put this into a hash or array and sort it.
-
-          -->
-          <% @latest_client_information.client_informations.each do |client| %>
-            <li class="list-group-item">
-              <a href=#>Edited by Matt Goar on 2015-09-09</a>
-            </li>
-          <% end %>
-      </ul>
     </div>
   </div>
 </div>

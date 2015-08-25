@@ -9,5 +9,6 @@ class ClientOnboardingStatus < ActiveRecord::Base
 
   belongs_to :impl_status
   belongs_to :client , :class_name => "Client", :foreign_key => "client_id"
+  belongs_to :user, :class_name => "User", :foreign_key => "last_edited_by"
 
 end

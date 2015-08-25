@@ -60,8 +60,17 @@
         <td><%= client.client_informations.order('updated_at DESC').first.last_contact_date %></td>
 
         <td>
-
-          <a href="/client_informations/<%= client.id %>" class="btn btn-primary">Show</a>
+          <div class="btn-group btn-group-sm" role="group" aria-label=".......">
+            <a href="/client_informations/<%= client.id %>" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></a>
+            <% if current_user.user_role_id.to_s[2] == '0' %>
+            <a href="/client_informations/<%= client.id %>/new_contact" class="btn btn-warning"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+            <% elsif current_user.user_role_id.to_s[2] == '2' %>
+            <a href="/client_informations/<%= client.id %>" class="btn btn-warning"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+            <% elsif current_user.user_role_id.to_s[2] == '3' %>
+            <a href="/client_informations/<%= client.id %>" class="btn btn-warning"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+            <% else %>
+            <% end %>
+          </div>
         </td>
       </tr>
       <% end %>

@@ -4,11 +4,14 @@ class ClientOnboardingStatusesController < ApplicationController
   end
 
   def show
-    @client_onboarding_status = ClientOnboardingStatus.where(id: params[:id]).order('updated_at').first
+    @latest_onboarding_status = ClientOnboardingStatus.where(client_id: params[:id]).order('updated_at DESC').first
+    @client_onboarding_status = ClientOnboardingStatus.order('updated_at DESC').where(client_id: params[:id]).all[1..-1]
   end
 
   def new
     @client_onboarding_status = ClientOnboardingStatus.new
+    @latest_onboarding_status = ClientOnboardingStatus.where(client_id: params[:id]).order('updated_at DESC').first
+
   end
 
   def create
@@ -36,9 +39,9 @@ class ClientOnboardingStatusesController < ApplicationController
 
   end
 
-  def edit
-    @client_onboarding_status = ClientOnboardingStatus.find(params[:id])
-  end
+  #def edit
+  #   @client_onboarding_status = ClientOnboardingStatus.find(params[:id])
+  #end
 
   # def update
   #   @client_onboarding_status = ClientOnboardingStatus.find(params[:id])
