@@ -3,7 +3,7 @@
     <h3>Client Information - <%= @latest_client_information.clientname %></h3>
   </div>
   <div class="row">
-    <div class="col-xs-12 col-md-6 col-md-offset-1">
+    <div class="col-xs-12 col-md-5 col-md-offset-1">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Current Status</h3>
@@ -47,17 +47,48 @@
         </div>
       </div>
     </div>
-    <div class="col-xs-12 col-md-4">
+    <div class="col-xs-12 col-md-5">
        <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Actions</h3>
         </div>
+
         <div class="panel-body">
-          <a href="/client_informations/<%= @latest_client_information.id %>/edit" class="btn btn-success btn-lg btn-block">Update Contact</a>
-          <a href="/client_informations/<%= @latest_client_information.id %>/edit" class="btn btn-success btn-lg btn-block">Update Implementation</a>
-          <a href="/client_informations/<%= @latest_client_information.id %>/edit" class="btn btn-success btn-lg btn-block">Update Payment</a>
-          <a href="/client_informations/<%= @latest_client_information.id %>/edit" class="btn btn-success btn-lg btn-block">Update Contract Details</a>
-          <a href="/client_informations" class="btn btn-primary btn-lg btn-block">Back</a>
+          <div class="row" style = "padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+              <a href="/client_informations/<%= @latest_client_information.id %>/edit_contact" class="btn btn-primary">View Contact Detail</a>
+              <a href="/client_informations/<%= @latest_client_information.id %>/edit_contact" class="btn btn-warning">Update Contact</a>
+            </div>
+          </div>
+
+
+          <div class="row" style = "padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+              <a href="/client_onboarding_statuses/<%= @latest_client_information.id %>/edit" class="btn btn-primary">View Impl Detail</a>
+              <a href="/client_onboarding_statuses/<%= @latest_client_information.id %>/edit" class="btn btn-warning">Update Impl</a>
+            </div>
+          </div>
+          <div class="row" style = "padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+              <a href="/client_informations/<%= @latest_client_information.id %>/payment" class="btn btn-primary">View Payment Detail</a>
+              <a href="/client_informations/<%= @latest_client_information.id %>/new_payment" class="btn btn-warning">Update Payment</a>
+            </div>
+          </div>
+          <div class="row" style = "padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+              <a href="/client_informations/<%= @latest_client_information.id %>/contract" class="btn btn-primary">View Contract Detail</a>
+               <a href="/client_informations/<%= @latest_client_information.id %>/new_contract" class="btn btn-warning">Update Contract</a>
+            </div>
+          </div>
+          <div class="row" style = "padding-left: 10px; padding-right: 10px; padding-bottom: 10px;">
+            <a href="/client_informations" class="btn btn-success btn-block">Back</a>
+          </div>
+
+
+
+
+
+
         </div>
       </div>
     </div>
@@ -80,7 +111,7 @@
             I can probably either put this into a hash or array and sort it.
 
           -->
-          <% @client_information.each do |client| %>
+          <% @latest_client_information.client_informations.each do |client| %>
             <li class="list-group-item">
               <a href=#>Edited by Matt Goar on 2015-09-09</a>
             </li>

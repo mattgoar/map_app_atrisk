@@ -1,0 +1,133 @@
+<!-- Validation failure messages -->
+<% if @client_information.errors.any? %>
+  <% @client_information.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Client Information</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+
+    <form action="/create_client_information" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+
+
+      <!-- Label and input for client_id -->
+
+      <input name="client_id" type="hidden" value="<%= @latest_client_information.client_id %>">
+
+       <!-- Label and input for last_edited_by -->
+      <input name="last_edited_by" type="hidden" value="<%= current_user.id %>">
+
+      <!-- Label and input for last_contact_date -->
+
+      <input name="last_contact_date" type="hidden" value="<%= @latest_client_information.last_contact_date %>">
+
+      <!-- Label and input for exec_sponsor -->
+
+      <input name="exec_sponsor" type="hidden" value="<%= @latest_client_information.exec_sponsor %>">
+
+      <!-- Label and input for payment_status_id -->
+
+      <input name="payment_status_id" type="hidden" value="<%= @latest_client_information.payment_status_id %>">
+
+      <!-- Label and input for balance -->
+
+      <input name="balance" type="hidden" value="<%= @latest_client_information.balance %>">
+
+
+      <!-- Label and input for expiration_date -->
+
+      <div class="form-group">
+        <label for="expiration_date" class="control-label">
+          Expiration date
+        </label>
+
+
+        <input type="date" id="expiration_date" name="expiration_date" placeholder="Expiration date" class="form-control" value="<%= @latest_client_information.expiration_date %>">
+
+      </div>
+
+      <!-- Label and input for reactivation_date -->
+
+      <div class="form-group">
+        <label for="reactivation_date" class="control-label">
+          Reactivation date
+        </label>
+
+
+        <input type="date" id="reactivation_date" name="reactivation_date" placeholder="Reactivation date" class="form-control" value="<%= @latest_client_information.reactivation_date %>">
+
+      </div>
+
+      <!-- Label and input for termination_notice -->
+
+      <div class="form-group">
+        <label for="termination_notice" class="control-label">
+          Termination notice
+        </label>
+
+
+        <input type="date" id="termination_notice" name="termination_notice" placeholder="Termination notice" class="form-control" value="<%= @latest_client_information.termination_notice %>">
+
+      </div>
+
+       <!-- Label and input for annual_fee -->
+
+      <div class="form-group">
+        <label for="annual_fee" class="control-label">
+          Annual fee
+        </label>
+
+
+        <input type="text" id="annual_fee" name="annual_fee" placeholder="Annual fee" class="form-control" value="<%= @latest_client_information.annual_fee %>">
+
+      </div>
+
+      <!-- Label and input for sales_rep_id -->
+
+      <div class="form-group">
+        <label for="sales_rep_id" class="control-label">
+          Sales rep
+        </label>
+
+        <%= select_tag(:sales_rep_id, options_from_collection_for_select(SalesRep.all, :id, :name, @latest_client_information.sales_rep_id), :class => "form-control") %>
+
+
+      </div>
+
+
+
+      <!-- Label and input for type -->
+
+      <div class="form-group">
+        <label for="type" class="control-label">
+          Contract Type
+        </label>
+
+
+        <input type="text" id="contract_type" name="contract_type" placeholder="Type" class="form-control" value="<%= @latest_client_information.contract_type %>">
+
+      </div>
+
+
+
+      <button class="btn btn-success">
+        Create Client Information
+      </button>
+      or
+      <a href="/client_informations">Cancel</a>
+
+    </form>
+
+  </div>
+</div>

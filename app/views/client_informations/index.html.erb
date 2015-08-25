@@ -42,22 +42,22 @@
 
         <td><%= client.clientname %></td>
 
-        <td><%= client.client_informations.order('updated_at').first.contract_type %></td>
+        <td><%= client.client_informations.order('updated_at DESC').first.contract_type %></td>
 
-        <td><%= client.client_informations.order('updated_at').first.sales_rep.name %></td>
+        <td><%= client.client_informations.order('updated_at DESC').first.sales_rep.name %></td>
 
-        <td><%= client.client_informations.order('updated_at').first.annual_fee %></td>
+        <td><%= number_to_currency(client.client_informations.order('updated_at DESC').first.annual_fee, precision: 0) %></td>
 
-        <td><%= client.client_informations.order('updated_at').first.expiration_date %></td>
-        <td><%= client.client_informations.order('updated_at').first.termination_notice %></td>
+        <td><%= client.client_informations.order('updated_at DESC').first.expiration_date %></td>
+        <td><%= client.client_informations.order('updated_at DESC').first.termination_notice %></td>
 
-        <td><%= client.client_onboarding_statuses.order('updated_at').first.impl_status.status_name %></td>
+        <td><%= client.client_onboarding_statuses.order('updated_at DESC').first.impl_status.status_name %></td>
 
-        <td><%= client.client_informations.order('updated_at').first.balance %></td>
-        <td><%= client.client_informations.order('updated_at').first.payment_status.status_name %></td>
+        <td><%= number_to_currency(client.client_informations.order('updated_at DESC').first.balance, precision: 0) %></td>
+        <td><%= client.client_informations.order('updated_at DESC').first.payment_status.status_name %></td>
 
-        <td><%= client.client_informations.order('updated_at').first.exec_sponsor %></td>
-        <td><%= client.client_informations.order('updated_at').first.last_contact_date %></td>
+        <td><%= client.client_informations.order('updated_at DESC').first.exec_sponsor %></td>
+        <td><%= client.client_informations.order('updated_at DESC').first.last_contact_date %></td>
 
         <td>
 

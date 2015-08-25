@@ -1,8 +1,10 @@
-
-ClientOnboardingStatus.create!([
-  {last_edited_by: 1, notes: "Hello", impl_status_id: 1, certification_date: "2015-09-09", kickoff_date: "2015-09-01", client_id: 3},
-  {last_edited_by: 1, notes: "SUNY", impl_status_id: 1, certification_date: "2015-09-09", kickoff_date: "2015-09-09", client_id: 4},
-  {last_edited_by: 1, notes: "Hello", impl_status_id: 1, certification_date: "2015-09-09", kickoff_date: "2015-09-01", client_id: 5},
-  {last_edited_by: 1, notes: "Hello", impl_status_id: 1, certification_date: "2015-09-09", kickoff_date: "2015-09-01", client_id: 6},
-  {last_edited_by: 1, notes: "SUNY", impl_status_id: 1, certification_date: "2015-09-09", kickoff_date: "2015-09-09", client_id: 7}
+ClientInformation.create!([
+  {client_id: 1, last_edited_by: 1, last_contact_date: "1982-09-06", exec_sponsor: "Matt Goar", termination_notice: "2015-08-13", payment_status_id: 1, balance: 1, reactivation_date: "2015-08-13", expiration_date: "2015-08-18", annual_fee: 1, sales_rep_id: 1, contract_type: "Hospital"},
+  {client_id: 2, last_edited_by: 1, last_contact_date: "1982-09-06", exec_sponsor: "Matt Goar", termination_notice: "2015-08-13", payment_status_id: 1, balance: 1, reactivation_date: "2015-08-13", expiration_date: "2015-08-18", annual_fee: 1, sales_rep_id: 1, contract_type: "Hospital"},
+  {client_id: 3, last_edited_by: 1, last_contact_date: "1982-09-06", exec_sponsor: "Matt Goar", termination_notice: "2015-08-13", payment_status_id: 1, balance: 1, reactivation_date: "2015-08-13", expiration_date: "2015-08-18", annual_fee: 1, sales_rep_id: 1, contract_type: "Hospital"},
+  {client_id: 4, last_edited_by: 1, last_contact_date: "1982-09-06", exec_sponsor: "Matt Goar", termination_notice: "2015-08-13", payment_status_id: 1, balance: 1, reactivation_date: "2015-08-13", expiration_date: "2015-08-18", annual_fee: 1, sales_rep_id: 1, contract_type: "Hospital"},
+  {client_id: 5, last_edited_by: 1, last_contact_date: "1982-09-06", exec_sponsor: "Matt Goar", termination_notice: "2015-08-13", payment_status_id: 1, balance: 1, reactivation_date: "2015-08-13", expiration_date: "2015-08-18", annual_fee: 1, sales_rep_id: 1, contract_type: "Hospital"},
+  {client_id: 6, last_edited_by: 1, last_contact_date: "1982-09-06", exec_sponsor: "Matt Goar", termination_notice: "2015-08-13", payment_status_id: 1, balance: 1, reactivation_date: "2015-08-13", expiration_date: "2015-08-18", annual_fee: 1, sales_rep_id: 1, contract_type: "Hospital"},
+  {client_id: 7, last_edited_by: 1, last_contact_date: "1900-01-01", exec_sponsor: "None", termination_notice: "1900-01-01", payment_status_id: 1, balance: 1, reactivation_date: "1900-01-01", expiration_date: "1900-01-01", annual_fee: 0, sales_rep_id: 1, contract_type: "None"},
+  {client_id: 8, last_edited_by: 1, last_contact_date: "1900-01-01", exec_sponsor: "None", termination_notice: "1900-01-01", payment_status_id: 1, balance: 0, reactivation_date: "1900-01-01", expiration_date: "1900-01-01", annual_fee: 0, sales_rep_id: 1, contract_type: "None"}
 ])

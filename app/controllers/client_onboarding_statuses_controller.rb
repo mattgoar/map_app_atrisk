@@ -4,7 +4,7 @@ class ClientOnboardingStatusesController < ApplicationController
   end
 
   def show
-    @client_onboarding_status = ClientOnboardingStatus.find(params[:id])
+    @client_onboarding_status = ClientOnboardingStatus.where(id: params[:id]).order('updated_at').first
   end
 
   def new
@@ -29,7 +29,7 @@ class ClientOnboardingStatusesController < ApplicationController
 
 
     if @client_onboarding_status.save
-      redirect_to "/client_onboarding_statuses", :notice => "Client onboarding status created successfully."
+      redirect_to :back, :notice => "Client onboarding status created successfully."
     else
       render 'new'
     end
@@ -40,39 +40,39 @@ class ClientOnboardingStatusesController < ApplicationController
     @client_onboarding_status = ClientOnboardingStatus.find(params[:id])
   end
 
-  def update
-    @client_onboarding_status = ClientOnboardingStatus.find(params[:id])
+  # def update
+  #   @client_onboarding_status = ClientOnboardingStatus.find(params[:id])
 
 
-    @client_onboarding_status.last_edited_by = params[:last_edited_by]
+  #   @client_onboarding_status.last_edited_by = params[:last_edited_by]
 
-    @client_onboarding_status.notes = params[:notes]
+  #   @client_onboarding_status.notes = params[:notes]
 
-    @client_onboarding_status.impl_status_id = params[:impl_status_id]
+  #   @client_onboarding_status.impl_status_id = params[:impl_status_id]
 
-    @client_onboarding_status.certification_date = params[:certification_date]
+  #   @client_onboarding_status.certification_date = params[:certification_date]
 
-    @client_onboarding_status.kickoff_date = params[:kickoff_date]
+  #   @client_onboarding_status.kickoff_date = params[:kickoff_date]
 
-    @client_onboarding_status.client_id = params[:client_id]
-
-
-
-    if @client_onboarding_status.save
-      redirect_to "/client_onboarding_statuses", :notice => "Client onboarding status updated successfully."
-    else
-      render 'edit'
-    end
-
-  end
-
-  def destroy
-    @client_onboarding_status = ClientOnboardingStatus.find(params[:id])
-
-    @client_onboarding_status.destroy
+  #   @client_onboarding_status.client_id = params[:client_id]
 
 
-    redirect_to "/client_onboarding_statuses", :notice => "Client onboarding status deleted."
 
-  end
+  #   if @client_onboarding_status.save
+  #     redirect_to :back, :notice => "Client onboarding status created successfully."
+  #   else
+  #     render 'edit'
+  #   end
+
+  # end
+
+  # def destroy
+  #   @client_onboarding_status = ClientOnboardingStatus.find(params[:id])
+
+  #   @client_onboarding_status.destroy
+
+
+  #   redirect_to "/client_onboarding_statuses", :notice => "Client onboarding status deleted."
+
+  # end
 end

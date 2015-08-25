@@ -70,8 +70,7 @@ Rails.application.routes.draw do
   post "/update_client_onboarding_status/:id", :controller => "client_onboarding_statuses", :action => "update"
 
   # DELETE
-  get "/delete_client_onboarding_status/:id", :controller => "client_onboarding_statuses", :action => "destroy"
-  get "/delete_client_onboarding_status/:id", :controller => "client_onboarding_statuses", :action => "destroy"
+  # get "/delete_client_onboarding_status/:id", :controller => "client_onboarding_statuses", :action => "destroy"
   #------------------------------
 
   # Routes for the Data_status resource:
@@ -94,11 +93,16 @@ Rails.application.routes.draw do
   # Routes for the Client_information resource:
   # CREATE
   get "/client_informations/new", :controller => "client_informations", :action => "new"
+  get "/client_informations/:id/new_contract", :controller => "client_informations", :action => "new_contract"
+  get "/client_informations/:id/new_payment", :controller => "client_informations", :action => "new_payment"
   post "/create_client_information", :controller => "client_informations", :action => "create"
 
   # READ
   get "/client_informations", :controller => "client_informations", :action => "index"
+  get "/client_informations/:id/contract", :controller => "client_informations", :action => "show_contract"
+  get "/client_informations/:id/payment", :controller => "client_informations", :action => "show_payment"
   get "/client_informations/:id", :controller => "client_informations", :action => "show"
+
 
   # UPDATE
   get "/client_informations/:id/edit", :controller => "client_informations", :action => "edit"
