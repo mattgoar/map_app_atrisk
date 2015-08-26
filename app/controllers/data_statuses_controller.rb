@@ -36,6 +36,11 @@ class DataStatusesController < ApplicationController
 
   end
 
+  def import_data
+    DataStatus.import(params[:file])
+    redirect_to :back, notice: "Products imported."
+  end
+
   def edit
     @data_status = DataStatus.find(params[:id])
   end

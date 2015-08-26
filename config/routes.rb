@@ -4,12 +4,12 @@ Rails.application.routes.draw do
 
   # Routes for the User_role resource:
   # CREATE
-  get "/user_roles/new", :controller => "user_roles", :action => "new"
-  post "/create_user_role", :controller => "user_roles", :action => "create"
+  # get "/user_roles/new", :controller => "user_roles", :action => "new"
+  # post "/create_user_role", :controller => "user_roles", :action => "create"
 
   # READ
-  get "/user_roles", :controller => "user_roles", :action => "index"
-  get "/user_roles/:id", :controller => "user_roles", :action => "show"
+  # get "/user_roles", :controller => "user_roles", :action => "index"
+  # get "/user_roles/:id", :controller => "user_roles", :action => "show"
 
   # UPDATE
   # get "/user_roles/:id/edit", :controller => "user_roles", :action => "edit"
@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   # CREATE
   get "/payment_statuses/new", :controller => "payment_statuses", :action => "new"
   post "/create_payment_status", :controller => "payment_statuses", :action => "create"
-
   # READ
   get "/payment_statuses", :controller => "payment_statuses", :action => "index"
   #get "/payment_statuses/:id", :controller => "payment_statuses", :action => "show"
@@ -77,6 +76,9 @@ Rails.application.routes.draw do
   # CREATE
   get "/data_statuses/new", :controller => "data_statuses", :action => "new"
   post "/create_data_status", :controller => "data_statuses", :action => "create"
+
+    post "/import_data", :controller => "data_statuses", :action => "import_data"
+
 
   # READ
   get "/data_statuses", :controller => "data_statuses", :action => "index"

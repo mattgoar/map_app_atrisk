@@ -8,4 +8,10 @@ class DataStatus < ActiveRecord::Base
   validates :client_id, :presence => true
 
   belongs_to :client , :class_name => "Client", :foreign_key => "client_id"
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      DataStatus.create! row.to_hash
+    end
+  end
 end
