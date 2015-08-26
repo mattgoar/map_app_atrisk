@@ -9,9 +9,11 @@ class DataStatus < ActiveRecord::Base
 
   belongs_to :client , :class_name => "Client", :foreign_key => "client_id"
 
-  def self.import(file)
+  def self.import(file, user_id)
     CSV.foreach(file.path, headers: true) do |row|
-      DataStatus.create! row.to_hash
+      data = row.to_hash
+      data[:last_edited_by] = user_id
+      DataStatus.create! data
     end
   end
 end

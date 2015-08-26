@@ -23,13 +23,11 @@ class ClientsController < ApplicationController
     if @client.save
       redirect_to "/clients", :notice => "Client created successfully."
 
-      client_information = ClientInformation.new(
-        {client_id: @client.id, last_edited_by: current_user.id, last_contact_date: "1900-01-01", exec_sponsor: "None", termination_notice: "1900-01-01", payment_status_id: 1, balance: 0, reactivation_date: "1900-01-01", expiration_date: "1900-01-01", annual_fee: 0, sales_rep_id: 1, contract_type: "None"})
-      client_information.save
+      ClientInformation.create!([{client_id: @client.id, last_edited_by: current_user.id, last_contact_date: "1900-01-01", exec_sponsor: "None", termination_notice: "1900-01-01", payment_status_id: 1, balance: 0, reactivation_date: "1900-01-01", expiration_date: "1900-01-01", annual_fee: 0, sales_rep_id: 1, contract_type: "None"}])
 
-      implementation_information = ClientOnboardingStatus.new(
-        {last_edited_by: current_user.id, notes: "None", impl_status_id: 1, certification_date: "1900-01-01", kickoff_date: "1900-01-01", client_id: @client.id})
-      implementation_information.save
+      ClientOnboardingStatus.create!([{last_edited_by: current_user.id, notes: "None", impl_status_id: 1, certification_date: "1900-01-01", kickoff_date: "1900-01-01", client_id: @client.id}])
+
+      DataStatus.create!([{last_edited_by: current_user.id, months_late: 0, db_type: 'None', month: 0, year: 0, client_id: @client.id}])
 
     else
       render 'new'

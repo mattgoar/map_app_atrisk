@@ -26,6 +26,8 @@
 
         <th>Implementation Status</th>
 
+        <th>Data Dlinquent Months</th>
+
         <th>Balance</th>
 
         <th>Payment status</th>
@@ -52,6 +54,8 @@
         <td><%= client.client_informations.order('updated_at DESC').first.termination_notice %></td>
 
         <td><%= client.client_onboarding_statuses.order('updated_at DESC').first.impl_status.status_name %></td>
+
+        <td><%= client.data_statuses.order('updated_at DESC').first.months_late %></td>
 
         <td><%= number_to_currency(client.client_informations.order('updated_at DESC').first.balance, precision: 0) %></td>
         <td><%= client.client_informations.order('updated_at DESC').first.payment_status.status_name %></td>

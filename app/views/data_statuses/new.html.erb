@@ -8,18 +8,31 @@
   <% end %>
 <% end %>
 
-<div class="page-header">
-  <h3>Add Data Status</h3>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
 
 
-    <%= form_tag "/import_data", multipart: true do %>
-      <%= file_field_tag :file %>
-      <%= submit_tag "Import" %>
-    <% end %>
-
+<div class= "container">
+  <div class="page-header col-md-10 col-md-offset-1">
+    <h4>Update Data Status</h4>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Upload File</h3>
+        </div>
+        <div class="panel-body">
+          <%= form_tag"/import_data", multipart: true, :class => 'form-group' do %>
+            <div class="col-md-6">
+              <span class="btn btn-warning btn-file btn-block">Select File<%= file_field_tag :file %></span>
+            </div>
+            <div class="col-md-6">
+              <%= button_tag(type: 'submit', class: "btn btn-large btn-search btn-primary btn-block") do %>
+                <i class="icon icon-search"></i> Import
+            </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -16,31 +16,34 @@
             <dt>Contract Type</dt>
             <dd><%= @latest_client_information.client_informations.order('updated_at DESC').first.contract_type %></dd>
 
-            <dt>Sales rep</dt>
+            <dt>Sales Representative</dt>
             <dd><%= @latest_client_information.client_informations.order('updated_at DESC').first.sales_rep.name %></dd>
 
-            <dt>Annual fee</dt>
+            <dt>Annual Fee</dt>
             <dd><%= number_to_currency(@latest_client_information.client_informations.order('updated_at DESC').first.annual_fee, precision: 0) %></dd>
 
-            <dt>Expiration date</dt>
+            <dt>Expiration Date</dt>
             <dd><%= @latest_client_information.client_informations.order('updated_at DESC').first.expiration_date %></dd>
 
-            <dt>Termination notice</dt>
+            <dt>Termination Notice</dt>
             <dd><%= @latest_client_information.client_informations.order('updated_at DESC').first.termination_notice %></dd>
 
             <dt>Implementation Status</dt>
             <dd><%= @latest_client_information.client_onboarding_statuses.order('updated_at DESC').first.impl_status.status_name %></dd>
 
+            <dt>Data Delinquent Months</dt>
+            <dd>Fill Me In</dd>
+
             <dt>Balance</dt>
             <dd><%= number_to_currency(@latest_client_information.client_informations.order('updated_at DESC').first.balance, precision: 0) %></dd>
 
-            <dt>Payment status</dt>
+            <dt>Payment Status</dt>
             <dd><%= @latest_client_information.client_informations.order('updated_at DESC').first.payment_status.status_name %></dd>
 
-            <dt>Exec sponsor</dt>
+            <dt>Exec Sponsor</dt>
             <dd><%= @latest_client_information.client_informations.order('updated_at DESC').first.exec_sponsor %></dd>
 
-            <dt>Last contact date</dt>
+            <dt>Last Contact Date</dt>
             <dd><%= @latest_client_information.client_informations.order('updated_at DESC').first.last_contact_date %></dd>
 
             <dt>At-Risk</dt>
@@ -92,7 +95,7 @@
           <div class="row" style = "padding-left: 10px; padding-right: 10px; padding-bottom: 8px;">
             <div class="btn-group btn-group-justified" role="group" aria-label="...">
               <a href="#" class="btn btn-primary">View Data Detail</a>
-               <a href="#" class="btn btn-warning">Update Data Status</a>
+               <a href="/data_statuses/new" class="btn btn-warning">Update Data Status</a>
             </div>
           </div>
           <hr>
