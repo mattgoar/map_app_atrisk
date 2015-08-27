@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  month: 1
+  year: 1
+  client_id: 1
+  exec_sponsor_status: MyString
+  last_contact_status: MyString
+  payment_status: MyString
+  data_status: MyString
+  implementation_status: MyString
+  current_status: MyString
+  current_reason: MyString
+
+two:
+  month: 1
+  year: 1
+  client_id: 1
+  exec_sponsor_status: MyString
+  last_contact_status: MyString
+  payment_status: MyString
+  data_status: MyString
+  implementation_status: MyString
+  current_status: MyString
+  current_reason: MyString

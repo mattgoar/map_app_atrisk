@@ -47,10 +47,10 @@
             <dd><%= @latest_client_information.client_informations.order('updated_at DESC').first.last_contact_date %></dd>
 
             <dt>At-Risk</dt>
-            <dd>Fill Me In</dd>
+            <dd><%= Atrisk.where(client_id: @latest_client_information.id).order('updated_at DESC').first.current_status %></dd>
 
             <dt>At-Risk Reason</dt>
-            <dd>Fill Me In</dd>
+            <dd><%= Atrisk.where(client_id: @latest_client_information.id).order('updated_at DESC').first.current_reason %></dd>
 
            </dl>
         </div>

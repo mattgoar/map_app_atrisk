@@ -6,4 +6,7 @@ class ClientInformation < ActiveRecord::Base
   belongs_to :sales_rep
   belongs_to :client , :class_name => "Client", :foreign_key => "client_id"
   belongs_to :user, :class_name => "User", :foreign_key => "last_edited_by"
+  belongs_to :atrisk, :class_name => "Atrisk", :foreign_key => "client_id"
+
+
 end

@@ -22,15 +22,19 @@
         </div>
         <div class="panel-body">
           <%= form_tag"/import_data", multipart: true, :class => 'form-group' do %>
-            <div class="col-md-6">
-              <span class="btn btn-warning btn-file btn-block">Select File<%= file_field_tag :file %></span>
-            </div>
-            <div class="col-md-6">
-              <%= button_tag(type: 'submit', class: "btn btn-large btn-search btn-primary btn-block") do %>
-                <i class="icon icon-search"></i> Import
-            </div>
-            <% end %>
+          <div class="col-md-4">
+            <span class="btn btn-warning btn-file btn-block">Select File<%= file_field_tag :file %></span>
+          </div>
+          <div class="col-md-4">
+            <%= button_tag(type: 'submit', class: "btn btn-large btn-search btn-primary btn-block") do %>
+            <i class="icon icon-search"></i> Import
+          </div>
           <% end %>
+          <div class="col-md-4">
+            <a href="/client_informations" class="btn btn-large btn-info btn-block">Back</a>
+          </div>
+          <% end %>
+
         </div>
       </div>
     </div>

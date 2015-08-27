@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824190328) do
+ActiveRecord::Schema.define(version: 20150826233135) do
+
+  create_table "atrisks", force: :cascade do |t|
+    t.integer  "month"
+    t.integer  "year"
+    t.integer  "client_id"
+    t.string   "exec_sponsor_status"
+    t.string   "last_contact_status"
+    t.string   "payment_status"
+    t.string   "data_status"
+    t.string   "implementation_status"
+    t.string   "current_status"
+    t.string   "current_reason"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
 
   create_table "client_informations", force: :cascade do |t|
     t.integer  "client_id"

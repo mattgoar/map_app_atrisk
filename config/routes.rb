@@ -32,8 +32,8 @@ Rails.application.routes.draw do
   # post "/update_payment_status/:id", :controller => "payment_statuses", :action => "update"
 
   # DELETE
-  # get "/activate_payment_status/:id", :controller => "payment_statuses", :action => "activate"
-  # get "/deactivate_payment_status/:id", :controller => "payment_statuses", :action => "deactivate"
+  get "/activate_payment_status/:id", :controller => "payment_statuses", :action => "activate"
+  get "/deactivate_payment_status/:id", :controller => "payment_statuses", :action => "deactivate"
 
   #------------------------------
 
@@ -51,8 +51,8 @@ Rails.application.routes.draw do
   # post "/update_sales_rep/:id", :controller => "sales_reps", :action => "update"
 
   # DELETE
-  # get "/activate_sales_rep/:id", :controller => "sales_reps", :action => "activate"
-  # get "/deactivate_sales_rep/:id", :controller => "sales_reps", :action => "deactivate"
+  get "/activate_sales_rep/:id", :controller => "sales_reps", :action => "activate"
+  get "/deactivate_sales_rep/:id", :controller => "sales_reps", :action => "deactivate"
   #------------------------------
 
   # Routes for the Client_onboarding_status resource:
@@ -102,6 +102,7 @@ Rails.application.routes.draw do
 
   # READ
   get "/client_informations", :controller => "client_informations", :action => "index"
+  get "/client_informations_summary", :controller => "client_informations", :action => "index_summary"
   get "/client_informations/:id/contract", :controller => "client_informations", :action => "show_contract"
   get "/client_informations/:id/payment", :controller => "client_informations", :action => "show_payment"
   get "/client_informations/:id/contact", :controller => "client_informations", :action => "show_contact"
@@ -130,8 +131,8 @@ Rails.application.routes.draw do
   # post "/update_impl_status/:id", :controller => "impl_statuses", :action => "update"
 
   # DELETE
-  # get "/activate_impl_status/:id", :controller => "impl_statuses", :action => "activate"
-  # get "/deactivate_impl_status/:id", :controller => "impl_statuses", :action => "deactivate"
+  get "/activate_impl_status/:id", :controller => "impl_statuses", :action => "activate"
+  get "/deactivate_impl_status/:id", :controller => "impl_statuses", :action => "deactivate"
 
   #------------------------------
 
@@ -149,8 +150,8 @@ Rails.application.routes.draw do
   post "/update_client/:id", :controller => "clients", :action => "update"
 
   # DELETE
-  # get "/activate_client/:id", :controller => "clients", :action => "activate"
-  # get "/deactivate_client/:id", :controller => "clients", :action => "deactivate"
+  get "/activate_client/:id", :controller => "clients", :action => "activate"
+  get "/deactivate_client/:id", :controller => "clients", :action => "deactivate"
 
   #------------------------------
 

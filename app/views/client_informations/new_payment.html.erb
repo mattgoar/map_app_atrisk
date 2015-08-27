@@ -73,7 +73,7 @@
                 Payment Status
               </label>
 
-              <%= select_tag(:payment_status_id, options_from_collection_for_select(PaymentStatus.all, :id, :status_name, @latest_client_information.payment_status_id), :class => "form-control") %>
+              <%= select_tag(:payment_status_id, options_from_collection_for_select(PaymentStatus.where(active: true), :id, :status_name, @latest_client_information.payment_status_id), :class => "form-control") %>
 
             </div>
 

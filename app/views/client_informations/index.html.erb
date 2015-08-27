@@ -1,6 +1,6 @@
 <div class="page-header">
   <h1>
-    MAP App At-Risk
+    At-Risk Detail
 
     <!-- <a href="/client_informations/new" class="btn btn-lg btn-success">New Client information</a> -->
 
@@ -64,7 +64,7 @@
         <td><%= client.client_informations.order('updated_at DESC').first.last_contact_date %></td>
 
         <td>
-          <div class="btn-group btn-group-sm" role="group" aria-label=".......">
+          <div class="btn-group btn-group-sm" style="width: 80px" role="group" aria-label=".......">
             <a href="/client_informations/<%= client.id %>" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></a>
             <% if current_user.user_role_id.to_s[2] == '0' %>
             <a href="/client_informations/<%= client.id %>/new_contact" class="btn btn-warning"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>

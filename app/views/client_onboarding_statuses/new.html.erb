@@ -60,7 +60,7 @@
             Update Current Status
             </label>
 
-             <%= select_tag(:impl_status_id, options_from_collection_for_select(ImplStatus.all, :id, :status_name, @latest_onboarding_status.impl_status_id), :class => "form-control") %>
+             <%= select_tag(:impl_status_id, options_from_collection_for_select(ImplStatus.where(active: true), :id, :status_name, @latest_onboarding_status.impl_status_id), :class => "form-control") %>
 
           </div>
 
