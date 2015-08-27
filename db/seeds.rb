@@ -1,7 +1,3 @@
-User.create!([
-  {email: "mattgoar@gmail.com", encrypted_password: "$2a$10$Hxb1oUS6MPMgkig.H3/IOeJw2jdEYyC.lZ2dsjuXqBSi6Way5GmOm", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 5, current_sign_in_at: "2015-08-27 17:36:01", last_sign_in_at: "2015-08-27 16:45:31", current_sign_in_ip: "::1", last_sign_in_ip: "::1", last_name: "Goar", first_name: "Matt", user_role_id: 110, user_password: nil},
-  {email: "mgoar@hfma.org", encrypted_password: "$2a$10$SIPYK/55wa9xJTZiX2vHNuSmWahhYuqYVzcQgULGLb69oCCjtDNIi", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2015-08-25 23:12:22", last_sign_in_at: "2015-08-25 22:41:22", current_sign_in_ip: "::1", last_sign_in_ip: "::1", last_name: "Test", first_name: "Test", user_role_id: 100, user_password: nil}
-])
 Atrisk.create!([
   {month: 12, year: 2015, client_id: 1, exec_sponsor_status: "At-Risk", last_contact_status: "Good Standing", payment_status: "NA", data_status: "At-Risk", implementation_status: "NA", current_status: "Good Standing", current_reason: "exec_sponsor_status, data_status"},
   {month: nil, year: nil, client_id: 1, exec_sponsor_status: "Good Standing", last_contact_status: "At-Risk", payment_status: "Good Standing", data_status: "At-Risk", implementation_status: "NA", current_status: "1. At-Risk", current_reason: "last_contact_status, data_status"},
