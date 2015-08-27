@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: "client_informations#index"
+  root to: "client_informations#index_summary"
 
   # Routes for the User_role resource:
   # CREATE
