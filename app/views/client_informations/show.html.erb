@@ -32,7 +32,7 @@
             <dd><%= @latest_client_information.client_onboarding_statuses.order('updated_at DESC').first.impl_status.status_name %></dd>
 
             <dt>Data Delinquent Months</dt>
-            <dd>Fill Me In</dd>
+            <dd><%= @latest_client_information.data_statuses.order('updated_at DESC').first.months_late %></dd>
 
             <dt>Balance</dt>
             <dd><%= number_to_currency(@latest_client_information.client_informations.order('updated_at DESC').first.balance, precision: 0) %></dd>
