@@ -104,25 +104,9 @@ class ClientInformationsController < ApplicationController
     puts atrisk_update.last_contact_status
 
     atrisk_update.save
-
-    latest_atrisk_information = Atrisk.where(client_id: client_information.client_id).order('updated_at DESC').first
-
-    at_risk_reasons = latest_atrisk_information.attributes.select { |k,v| v == "At-Risk"}.keys.join(", ").gsub('_',' ').gsub(' status','').titleize
-    watch_reasons = latest_atrisk_information.attributes.select { |k,v| v == "Watch"}.keys.join(", ").gsub('_',' ').gsub(' status','').titleize
-
-    if at_risk_reasons.length > 0 then
-      latest_atrisk_information.current_status = '1. At-Risk'
-      latest_atrisk_information.current_reason = at_risk_reasons
-    elsif watch_reasons.length > 0 then
-      latest_atrisk_information.current_status = '2. Watch'
-      latest_atrisk_information.current_reason = watch_reasons
-    else
-      latest_atrisk_information.current_status = '3. Good Standing'
-      latest_atrisk_information.current_reason = ''
-    end
-    latest_atrisk_information.save
-
+    Atrisk.update(client_information.client_id)
   end
+
 #  def new
 #    @client_information = ClientInformation.new
 #  end

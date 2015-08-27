@@ -18,9 +18,11 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Upload File</h3>
+          <h3 class="panel-title">Upload File</h3><a href="/test_upload.csv" target="_blank">Download example file format</a>
         </div>
+
         <div class="panel-body">
+
           <%= form_tag"/import_data", multipart: true, :class => 'form-group' do %>
           <div class="col-md-4">
             <span class="btn btn-warning btn-file btn-block">Select File<%= file_field_tag :file %></span>
@@ -34,7 +36,6 @@
             <a href="/client_informations" class="btn btn-large btn-info btn-block">Back</a>
           </div>
           <% end %>
-
         </div>
       </div>
     </div>

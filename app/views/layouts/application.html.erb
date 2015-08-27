@@ -52,13 +52,6 @@
           </li>
 
 
-          <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Statuses<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                  <li><a href="/data_statuses">Data Status</a></li>
-              </ul>
-          </li>
-
           <% if current_user.nil? %>
 
           <% elsif current_user.user_role_id.to_s[1] == "1" %>
@@ -72,6 +65,8 @@
                   <li><a href="/sales_reps">Sales Reps</a></li>
              <!-- <li><a href="/user_roles">Roles</a></li> -->
                   <li><a href="/payment_statuses">Payment Status</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Admin Tools</a></li>
                 </ul>
           </li>
 

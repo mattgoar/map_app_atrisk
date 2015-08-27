@@ -77,12 +77,12 @@ Rails.application.routes.draw do
   get "/data_statuses/new", :controller => "data_statuses", :action => "new"
   post "/create_data_status", :controller => "data_statuses", :action => "create"
 
-    post "/import_data", :controller => "data_statuses", :action => "import_data"
+  post "/import_data", :controller => "data_statuses", :action => "import_data"
 
 
   # READ
-  get "/data_statuses", :controller => "data_statuses", :action => "index"
-  #get "/data_statuses/:id", :controller => "data_statuses", :action => "show"
+  #get "/data_statuses", :controller => "data_statuses", :action => "index"
+  get "/data_statuses/:id", :controller => "data_statuses", :action => "show"
 
   # UPDATE
   # get "/data_statuses/:id/edit", :controller => "data_statuses", :action => "edit"

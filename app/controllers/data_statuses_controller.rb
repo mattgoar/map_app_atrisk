@@ -4,80 +4,81 @@ class DataStatusesController < ApplicationController
   end
 
   def show
-    @data_status = DataStatus.find(params[:id])
+    @latest_data_status = DataStatus.where(client_id: params[:id]).order('updated_at DESC').first
+    @data_status = DataStatus.order('updated_at DESC').where(client_id: params[:id]).all[1..-1]
   end
 
-  def new
-    @data_status = DataStatus.new
-  end
+   def new
+     @data_status = DataStatus.new
+   end
 
-  def create
-    @data_status = DataStatus.new
+  # def create
+  #   @data_status = DataStatus.new
 
-    @data_status.last_edited_by = params[:last_edited_by]
+  #   @data_status.last_edited_by = params[:last_edited_by]
 
-    @data_status.months_late = params[:months_late]
+  #   @data_status.months_late = params[:months_late]
 
-    @data_status.db_type = params[:db_type]
+  #   @data_status.db_type = params[:db_type]
 
-    @data_status.month = params[:month]
+  #   @data_status.month = params[:month]
 
-    @data_status.year = params[:year]
+  #   @data_status.year = params[:year]
 
-    @data_status.client_id = params[:client_id]
+  #   @data_status.client_id = params[:client_id]
 
 
 
-    if @data_status.save
-      redirect_to "/data_statuses", :notice => "Data status created successfully."
-    else
-      render 'new'
-    end
+  #   if @data_status.save
+  #     redirect_to "/data_statuses", :notice => "Data status created successfully."
+  #   else
+  #     render 'new'
+  #   end
 
-  end
+  # end
 
   def import_data
     DataStatus.import(params[:file], current_user.id)
     redirect_to :back, notice: "Data status imported imported."
   end
 
-  def edit
-    @data_status = DataStatus.find(params[:id])
-  end
+  # def edit
+  #   @data_status = DataStatus.find(params[:id])
+  # end
 
-  def update
-    @data_status = DataStatus.find(params[:id])
-
-
-    @data_status.last_edited_by = params[:last_edited_by]
-
-    @data_status.months_late = params[:months_late]
-
-    @data_status.db_type = params[:db_type]
-
-    @data_status.month = params[:month]
-
-    @data_status.year = params[:year]
-
-    @data_status.client_id = params[:client_id]
+  # def update
+  #   @data_status = DataStatus.find(params[:id])
 
 
+  #   @data_status.last_edited_by = params[:last_edited_by]
 
-    if @data_status.save
-      redirect_to "/data_statuses", :notice => "Data status updated successfully."
-    else
-      render 'edit'
-    end
+  #   @data_status.months_late = params[:months_late]
 
-  end
+  #   @data_status.db_type = params[:db_type]
 
-  def destroy
-    @data_status = DataStatus.find(params[:id])
+  #   @data_status.month = params[:month]
 
-    @data_status.destroy
+  #   @data_status.year = params[:year]
+
+  #   @data_status.client_id = params[:client_id]
 
 
-    redirect_to "/data_statuses", :notice => "Data status deleted."
 
-  end
+  #   if @data_status.save
+  #     redirect_to "/data_statuses", :notice => "Data status updated successfully."
+  #   else
+  #     render 'edit'
+  #   end
+
+  # end
+
+  # def destroy
+  #   @data_status = DataStatus.find(params[:id])
+
+  #   @data_status.destroy
+
+
+  #   redirect_to "/data_statuses", :notice => "Data status deleted."
+
+  # end
 end

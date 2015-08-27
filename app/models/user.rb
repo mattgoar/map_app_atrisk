@@ -16,4 +16,5 @@ class User < ActiveRecord::Base
 
   has_many :client_informations , :class_name => "ClientInformation", :foreign_key => "last_edited_by"
   has_many :client_onboarding_statuses , :class_name => "ClientOnboardingStatus", :foreign_key => "last_edited_by"
+  has_many :data_statuses , :class_name => "DataStatus", :foreign_key => "last_edited_by"
 end
