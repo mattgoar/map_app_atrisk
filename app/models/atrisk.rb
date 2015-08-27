@@ -29,6 +29,100 @@ class Atrisk < ActiveRecord::Base
     latest_atrisk_information.save
   end
 
+  def self.update_implementation(implementation_status)
+
+    atrisk_update = Atrisk.where(client_id: implementation_status.client_id).order('updated_at DESC').first
+
+    if implementation_status.updated_at >= atrisk_update.updated_at then
+
+      atrisk_update = atrisk_update.dup
+
+      #
+      # Relevant updates
+      #
+
+      impl_days =
+        if implementation_status.kickoff_date.nil?
+          then 999
+        else (Date.today - implementation_status.kickoff_date).to_i
+        end
+      atrisk_update.implementation_status =
+      if implementation_status.impl_status.status_name == '1. Active'
+        then
+        if impl_days > 150
+          then 'At-Risk'
+        elsif impl_days > 90
+          then 'Watch'
+        else 'Good Standing'
+        end
+      else 'Good Standing'
+      end
+
+      atrisk_update.save
+      Atrisk.update(implementation_status.client_id)
+
+    else
+    end
+
+  end
+
+  def self.update_client_information(client_information)
+    atrisk_update = Atrisk.where(client_id: client_information.client_id).order('updated_at DESC').first
+
+    if client_information.updated_at >= atrisk_update.updated_at then
+
+       atrisk_update = atrisk_update.dup
+
+      atrisk_update.exec_sponsor_status = if client_information.exec_sponsor != 'None' then 'Good Standing' else 'At-Risk' end
+      days_since_contact =
+        if client_information.last_contact_date.nil?
+          then 999
+        else (Date.today - client_information.last_contact_date).to_i
+        end
+      atrisk_update.last_contact_status = if days_since_contact >= 180 then 'At-Risk' elsif days_since_contact >= 90 then 'Watch' else 'Good Standing' end
+      #
+      # This is not a good way to do this
+      # Fix me later
+      #
+      atrisk_update.payment_status =
+      if client_information.payment_status.status_name == '5. Over 120 Days' then 'At-Risk'
+      elsif client_information.payment_status.status_name == '4. 61 - 120 Days' then 'Watch'
+      else 'Good Standing'
+      end
+
+      atrisk_update.save
+      Atrisk.update(client_information.client_id)
+    else
+    end
+  end
+
+  def self.update_data_status()
+    Client.find_each do |client|
+      atrisk_update = Atrisk.where(client_id: client.id).order('updated_at DESC').first.dup
+      atrisk_update.data_status =
+        if client.data_statuses.order('updated_at DESC').first.months_late >= 4
+          then 'At-Risk'
+        elsif client.data_statuses.order('updated_at DESC').first.months_late >= 3
+          then 'Watch'
+        else 'Good Standing'
+        end
+      atrisk_update.save
+      Atrisk.update(client.id)
+    end
+  end
+
+  #
+  # Set this to run every night
+  #
+
+  def self.update_all()
+    Client.find_each do |client|
+      Atrisk.update_implementation(client.client_onboarding_statuses.order('updated_at DESC').first)
+      Atrisk.update_client_information(client.client_informations.order('updated_at DESC').first)
+    end
+    Atrisk.update_data_status()
+  end
+
   def self.create_default(client_id)
     Atrisk.create!([{
       month: nil,
@@ -41,7 +135,7 @@ class Atrisk < ActiveRecord::Base
       implementation_status: "Good Standing",
       current_status: "3. Good Standing",
       current_reason: ""
-    }])
+      }])
   end
 
 

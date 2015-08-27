@@ -7,6 +7,36 @@
   </h1>
 </div>
 
+
+<div class="row">
+  <div class="col-md-8">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>At-Risk Status</th>
+        <th>At-Risk Dollars</th>
+        <th>Previous Month</th>
+        <th>Variance</th>
+      </tr>
+      <tr>
+        <td>1. At-Risk</td>
+        <td>Fill In</td>
+        <td>Fill In</td>
+        <td>FIll In</td>
+      </tr>
+      <tr>
+        <td>2. Watchk</td>
+        <td>Fill In</td>
+        <td>Fill In</td>
+        <td>FIll In</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+
+
+
 <div class="row">
   <div class="col-md-12">
     <table class="table table-striped table-hover">
@@ -16,25 +46,43 @@
 
         <th>Client</th>
 
-        <th>Annual fee</th>
+        <th>At-Risk Dollars</th>
 
         <th>Reason</th>
+
+         <th>Actions</th>
 
       </tr>
 
       <% @client_informations.each do |client| %>
-      <tr>
-
-        <td><%= Atrisk.where(client_id: client.id).order('updated_at DESC').first.current_status %></td>
-
-        <td><%= client.clientname %></td>
-
-        <td><%= number_to_currency(client.client_informations.order('updated_at DESC').first.annual_fee, precision: 0) %></td>
-
-        <td><%= Atrisk.where(client_id: client.id).order('updated_at DESC').first.current_reason %></td>
-
-      </tr>
+      <% status =  Atrisk.where(client_id: client.id).order('updated_at DESC').first.current_status %>
+        <% if status == '1. At-Risk' %>
+        <tr>
+          <td><%= status %></td>
+          <td><%= client.clientname %></td>
+          <td><%= number_to_currency(client.client_informations.order('updated_at DESC').first.annual_fee, precision: 0) %></td>
+          <td><%= Atrisk.where(client_id: client.id).order('updated_at DESC').first.current_reason %></td>
+          <td><a href="/client_informations/<%= client.id %>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search" aria-hidden="true"></a></td>
+        </tr>
+        <% else %>
+        <% end %>
       <% end %>
+      <% @client_informations.each do |client| %>
+      <% status =  Atrisk.where(client_id: client.id).order('updated_at DESC').first.current_status %>
+        <% if status == '2. Watch' %>
+        <tr>
+          <td><%= status %></td>
+          <td><%= client.clientname %></td>
+          <td><%= number_to_currency(client.client_informations.order('updated_at DESC').first.annual_fee, precision: 0) %></td>
+          <td><%= Atrisk.where(client_id: client.id).order('updated_at DESC').first.current_reason %></td>
+          <td><a href="/client_informations/<%= client.id %>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search" aria-hidden="true"></a></td>
+        </tr>
+        <% else %>
+        <% end %>
+      <% end %>
+
+
+
     </table>
   </div>
 </div>

@@ -70,33 +70,13 @@ class ClientInformationsController < ApplicationController
     @client_information.contract_type = params[:contract_type]
 
     if @client_information.save
-      update_atrisk(@client_information)
+      Atrisk.update_client_information(@client_information)
       redirect_to :back, :notice => "Client information created successfully."
     else
       render 'new'
     end
   end
 
-  def update_atrisk(client_information)
-    atrisk_update = Atrisk.where(client_id: client_information.client_id).order('updated_at DESC').first.dup
-
-    atrisk_update.exec_sponsor_status = if client_information.exec_sponsor != 'None' then 'Good Standing' else 'At-Risk' end
-    days_since_contact = (Date.today - client_information.last_contact_date).to_i
-    atrisk_update.last_contact_status = if days_since_contact >= 180 then 'At-Risk' elsif days_since_contact >= 90 then 'Watch' else 'Good Standing' end
-    #
-    # This is not a good way to do this
-    # Fix me later
-    #
-    atrisk_update.payment_status =
-      if client_information.payment_status.status_name == '5. Over 120 Days' then 'At-Risk'
-      elsif client_information.payment_status.status_name == '4. 61 - 120 Days' then 'Watch'
-      else 'Good Standing'
-      end
-
-    atrisk_update.save
-    Atrisk.update(client_information.client_id)
-
-  end
 
 #  def new
 #    @client_information = ClientInformation.new

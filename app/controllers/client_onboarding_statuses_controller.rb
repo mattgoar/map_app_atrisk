@@ -31,36 +31,12 @@ class ClientOnboardingStatusesController < ApplicationController
 
 
     if @client_onboarding_status.save
-      update_atrisk(@client_onboarding_status)
+      Atrisk.update_implementation(@client_onboarding_status)
+
       redirect_to :back, :notice => "Client onboarding status created successfully."
     else
       render 'new'
     end
-  end
-
-  def update_atrisk(implementation_status)
-    atrisk_update = Atrisk.where(client_id: implementation_status.client_id).order('updated_at DESC').first.dup
-
-    #
-    # Relevant updates
-    #
-
-    impl_days = (Date.today - implementation_status.kickoff_date).to_i
-    atrisk_update.implementation_status =
-      if implementation_status.impl_status.status_name == '1. Active'
-        then
-        if impl_days > 150
-          then 'At-Risk'
-          elsif impl_days > 90
-            then 'Watch'
-          else 'Good Standing'
-          end
-        else 'Good Standing'
-      end
-
-      atrisk_update.save
-      Atrisk.update(implementation_status.client_id)
-
   end
 
 
