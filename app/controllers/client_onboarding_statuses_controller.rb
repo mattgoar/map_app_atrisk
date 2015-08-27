@@ -10,7 +10,7 @@ class ClientOnboardingStatusesController < ApplicationController
 
   def new
     @client_onboarding_status = ClientOnboardingStatus.new
-    @latest_onboarding_status = ClientOnboardingStatus.where(client_id: [:id]).order('updated_at DESC').first
+    @latest_onboarding_status = ClientOnboardingStatus.where(client_id: params[:id]).order('updated_at DESC').first
   end
 
   def create
@@ -31,6 +31,7 @@ class ClientOnboardingStatusesController < ApplicationController
 
 
     if @client_onboarding_status.save
+      update_atrisk(@client_onboarding_status)
       redirect_to :back, :notice => "Client onboarding status created successfully."
     else
       render 'new'

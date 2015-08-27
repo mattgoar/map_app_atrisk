@@ -78,8 +78,8 @@ class ClientInformationsController < ApplicationController
   end
 
   def update_atrisk(client_information)
-    atrisk_update = Atrisk.new
-    atrisk_update.client_id = client_information.client_id
+    atrisk_update = Atrisk.where(client_id: client_information.client_id).order('updated_at DESC').first.dup
+
     atrisk_update.exec_sponsor_status = if client_information.exec_sponsor != 'None' then 'Good Standing' else 'At-Risk' end
     days_since_contact = (Date.today - client_information.last_contact_date).to_i
     atrisk_update.last_contact_status = if days_since_contact >= 180 then 'At-Risk' elsif days_since_contact >= 90 then 'Watch' else 'Good Standing' end
@@ -88,23 +88,14 @@ class ClientInformationsController < ApplicationController
     # Fix me later
     #
     atrisk_update.payment_status =
-      if client_information.payment_status.status_name == '' then 'At-Risk'
-      elsif client_information.payment_status.status_name == '' then 'Watch'
+      if client_information.payment_status.status_name == '5. Over 120 Days' then 'At-Risk'
+      elsif client_information.payment_status.status_name == '4. 61 - 120 Days' then 'Watch'
       else 'Good Standing'
       end
 
-    atrisk_update.implementation_status =  client_information.atrisk.implementation_status
-    atrisk_update.data_status = client_information.atrisk.data_status
-
-    current_status = "NA"
-    current_reason = "NA"
-
-    puts '#'*80
-    puts days_since_contact
-    puts atrisk_update.last_contact_status
-
     atrisk_update.save
     Atrisk.update(client_information.client_id)
+
   end
 
 #  def new
