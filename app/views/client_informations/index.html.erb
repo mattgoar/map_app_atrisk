@@ -56,17 +56,18 @@
         <td><%= Atrisk.where(client_id: client.id).order('updated_at DESC').first.current_reason %></td>
 
         <td>
-          <div class="btn-group btn-group-xs" style="" role="group" aria-label=".......">
-            <a href="/client_informations/<%= client.id %>" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></a>
+
+            <a href="/client_informations/<%= client.id %>" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+
             <% if current_user.user_role_id.to_s[2] == '1' %>
-            <a href="/client_informations/<%= client.id %>/new_contact" class="btn btn-warning"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+            <a href="/client_informations/<%= client.id %>/new_contact" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
             <% elsif current_user.user_role_id.to_s[2] == '2' %>
-            <a href="/client_onboarding_statuses/<%= client.id %>/new" class="btn btn-warning"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+            <a href="/client_onboarding_statuses/<%= client.id %>/new" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
             <% elsif current_user.user_role_id.to_s[2] == '0' %>
-            <a href="/client_informations/<%= client.id %>/new_contract" class="btn btn-warning"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+            <a href="/client_informations/<%= client.id %>/new_contract" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
             <% else %>
             <% end %>
-          </div>
+
         </td>
       </tr>
       <% end %>

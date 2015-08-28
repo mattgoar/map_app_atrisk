@@ -40,7 +40,7 @@ class DataStatusesController < ApplicationController
   def import_data
     DataStatus.import(params[:file], current_user.id)
     Atrisk.update_data_status()
-    redirect_to :back, notice: "Data status imported imported."
+    redirect_to :back, notice: "Data status imported."
   end
 
   # def edit
