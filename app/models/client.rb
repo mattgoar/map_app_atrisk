@@ -31,7 +31,7 @@ class Client < ActiveRecord::Base
   def self.check_assoc_data(current_user_id)
     Client.find_each do |client|
       if ClientInformation.find_by(client_id: client.id).nil?
-        then ClientInformation.create_default(client.id current_user_id)
+        then ClientInformation.create_default(client.id, current_user_id)
         else
       end
 

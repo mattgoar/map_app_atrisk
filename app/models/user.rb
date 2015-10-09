@@ -6,9 +6,21 @@ class User < ActiveRecord::Base
 
   after_initialize :init
 
-    def init
-      self.user_role_id  ||= 100    #will set the default value only if it's nil
+  def init
+    self.user_role_id  ||= 100    #will set the default value only if it's nil
+  end
+
+  def active_for_authentication?
+    super && approved?
+  end
+
+  def inactive_message
+    if !approved?
+      :not_approved
+    else
+      super # Use whatever other message
     end
+  end
 
   validates :email, :presence => true, :uniqueness => true
   validates :first_name, :presence => true

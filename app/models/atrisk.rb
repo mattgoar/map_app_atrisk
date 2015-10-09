@@ -33,7 +33,7 @@ class Atrisk < ActiveRecord::Base
 
     atrisk_update = Atrisk.where(client_id: implementation_status.client_id).order('updated_at DESC').first
 
-    if implementation_status.updated_at >= atrisk_update.updated_at then
+    #if implementation_status.updated_at >= atrisk_update.updated_at then
 
       atrisk_update = atrisk_update.dup
 
@@ -61,15 +61,15 @@ class Atrisk < ActiveRecord::Base
       atrisk_update.save
       Atrisk.update(implementation_status.client_id)
 
-    else
-    end
+    #else
+    #end
 
   end
 
   def self.update_client_information(client_information)
     atrisk_update = Atrisk.where(client_id: client_information.client_id).order('updated_at DESC').first
 
-    if client_information.updated_at >= atrisk_update.updated_at then
+    # if client_information.updated_at >= atrisk_update.updated_at then
 
        atrisk_update = atrisk_update.dup
 
@@ -79,7 +79,12 @@ class Atrisk < ActiveRecord::Base
           then 999
         else (Date.today - client_information.last_contact_date).to_i
         end
-      atrisk_update.last_contact_status = if days_since_contact >= 180 then 'At-Risk' elsif days_since_contact >= 90 then 'Watch' else 'Good Standing' end
+      atrisk_update.last_contact_status =
+        if client_information.client.client_onboarding_statuses.order('updated_at DESC').first.impl_status.status_name == '1. Active' then 'Good Standing'
+          elsif days_since_contact >= 180 then 'At-Risk'
+          elsif days_since_contact >= 90 then 'Watch'
+          else 'Good Standing'
+        end
       #
       # This is not a good way to do this
       # Fix me later
@@ -92,8 +97,8 @@ class Atrisk < ActiveRecord::Base
 
       atrisk_update.save
       Atrisk.update(client_information.client_id)
-    else
-    end
+    #else
+    #end
   end
 
   def self.update_data_status()
