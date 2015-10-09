@@ -13,8 +13,25 @@ class Atrisk < ActiveRecord::Base
   def self.update(client_id)
     latest_atrisk_information = Atrisk.where(client_id: client_id).order('updated_at DESC').first
 
+    exp_date = ClientInformation.where(client_id: client_id).order('updated_at DESC').first.expiration_date
+
     at_risk_reasons = latest_atrisk_information.attributes.select { |k,v| v == "At-Risk"}.keys.join(", ").gsub('_',' ').gsub(' status','').titleize
     watch_reasons = latest_atrisk_information.attributes.select { |k,v| v == "Watch"}.keys.join(", ").gsub('_',' ').gsub(' status','').titleize
+
+    exp_days = Date.today - exp_date.to_i
+
+    if exp_days < 60
+      if exp_days < 30
+        if at_risk_reasons.length > 0
+          then at_risk_reasons = at_risk_reasons + " , Expiration"
+        else at_risk_reasons = "Expiration"
+        end
+      end
+      if watch_reasons.length > 0
+        then watch_reasons = watch_reasons + " , Expiration"
+        else watch_reasons = "Expiration"
+      end
+    end
 
     if at_risk_reasons.length > 0 then
       latest_atrisk_information.current_status = '1. At-Risk'
