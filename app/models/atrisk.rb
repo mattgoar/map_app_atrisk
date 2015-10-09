@@ -18,7 +18,7 @@ class Atrisk < ActiveRecord::Base
     at_risk_reasons = latest_atrisk_information.attributes.select { |k,v| v == "At-Risk"}.keys.join(", ").gsub('_',' ').gsub(' status','').titleize
     watch_reasons = latest_atrisk_information.attributes.select { |k,v| v == "Watch"}.keys.join(", ").gsub('_',' ').gsub(' status','').titleize
 
-    exp_days = (Date.today - exp_date).to_i
+    exp_days = (exp_date - Date.today).to_i
 
     if exp_days < 60
       if exp_days < 30
@@ -32,6 +32,7 @@ class Atrisk < ActiveRecord::Base
         else watch_reasons = "Expiration"
       end
     end
+
 
     if at_risk_reasons.length > 0 then
       latest_atrisk_information.current_status = '1. At-Risk'
