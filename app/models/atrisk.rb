@@ -23,12 +23,12 @@ class Atrisk < ActiveRecord::Base
     if exp_days < 60
       if exp_days < 30
         if at_risk_reasons.length > 0
-          then at_risk_reasons = at_risk_reasons + " , Expiration"
+          then at_risk_reasons = at_risk_reasons + ", Expiration"
         else at_risk_reasons = "Expiration"
         end
       end
       if watch_reasons.length > 0
-        then watch_reasons = watch_reasons + " , Expiration"
+        then watch_reasons = watch_reasons + ", Expiration"
         else watch_reasons = "Expiration"
       end
     end
